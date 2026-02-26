@@ -52,7 +52,8 @@ namespace GOAP
         /// <returns></returns>
         public bool CompareConditionTooEffect(G_Condition effect)
         {
-            if (state.TestValueMatch(effect.state.GetValue()))
+            if (IsStateTheConditionState(effect.state)
+                && state.TestValueMatch(effect.state.GetValue()))
             {
                 return state.TestStateConditionMatch(this, effect);
             }

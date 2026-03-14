@@ -97,8 +97,8 @@ namespace GOAP
         /// <returns></returns>
         public override bool TestStateConditionMatch(G_Condition precondition, G_Condition effect)
         {
-            bool preValue = (bool)precondition.State.GetValue();
-            bool effectValue = (bool)effect.State.GetValue();
+            bool preValue = (bool)precondition.ExpectedValue;
+            bool effectValue = (bool)effect.ExpectedValue;
             bool preCompareValid = StateSupportsComparion(precondition.Comparison);
             bool effectCompareValid = StateSupportsComparion(effect.Comparison);
 
@@ -122,21 +122,23 @@ namespace GOAP
         #region Conditions
         bool CompareConditions(G_StateComparison preconditionCompare, G_StateComparison effectCompare, bool preValue, bool effectValue)
         {
-            return CompareEqual(preconditionCompare, effectCompare, preValue, effectValue) || CompareNotEqual(preconditionCompare, effectCompare, preValue, effectValue);
+            bool result = false;
+
+            if (CompareSameCondition(preconditionCompare, effectCompare, preValue, effectValue) || CompareOppositeCondition(preconditionCompare, effectCompare, preValue, effectValue))
+            {
+                result = true;
+            }
+            return result;
         }
 
-        bool CompareEqual(G_StateComparison preconditionCompare, G_StateComparison effectCompare, bool preValue, bool effectValue)
+        bool CompareSameCondition(G_StateComparison preconditionCompare, G_StateComparison effectCompare, bool preValue, bool effectValue)
         {
-            return preconditionCompare == G_StateComparison.equal
-                && effectCompare == G_StateComparison.equal
-                && preValue == effectValue;
+            return preconditionCompare == effectCompare && preValue == effectValue;
         }
 
-        bool CompareNotEqual(G_StateComparison preconditionCompare, G_StateComparison effectCompare, bool preValue, bool effectValue)
+        bool CompareOppositeCondition(G_StateComparison preconditionCompare, G_StateComparison effectCompare, bool preValue, bool effectValue)
         {
-            return preconditionCompare == G_StateComparison.not_equal
-                && effectCompare == G_StateComparison.not_equal
-                && preValue != effectValue;
+            return preconditionCompare != effectCompare && preValue != effectValue;
         }
 
 

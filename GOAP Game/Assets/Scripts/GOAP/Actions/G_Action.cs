@@ -67,7 +67,7 @@ namespace GOAP
         public bool DoesEffectMatch(G_Condition unmetPrecondition)
         {
             G_Condition relevantEffect = effects.Find(
-                (effect) => unmetPrecondition.CompareConditionTooEffect(effect)
+                (effect) => unmetPrecondition.CompareConditionToEffect(effect)
                 );
 
             return relevantEffect != null;

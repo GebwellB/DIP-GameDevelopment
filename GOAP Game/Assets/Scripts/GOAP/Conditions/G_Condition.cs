@@ -50,7 +50,7 @@ namespace GOAP
         /// </summary>
         /// <param name="effect"></param>
         /// <returns></returns>
-        public bool CompareConditionTooEffect(G_Condition effect)
+        public bool CompareConditionToEffect(G_Condition effect)
         {
             if (IsStateTheConditionState(effect.state)
                 && state.TestValueMatch(effect.state.GetValue()))

@@ -104,6 +104,11 @@ namespace GOAP
         {
             bool result = false;
 
+            result = G_NumberConditionComparer.CompareNumberCondition((float)precondition.ExpectedValue,
+                precondition.Comparison,
+                (float)effect.ExpectedValue,
+                effect.Comparison);
+
             return result;
         }
 

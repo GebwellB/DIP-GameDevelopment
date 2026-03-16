@@ -13,6 +13,16 @@ namespace GOAP
         {
             return new G_AtLocationBuilder();
         }
+
+        public static G_InventoryBuilder InventoryState(string name)
+        {
+            return new G_InventoryBuilder(name);
+        }
+
+        public static ItemBuilder Item(string name)
+        {
+            return new ItemBuilder(name);
+        }
     }
 }
 

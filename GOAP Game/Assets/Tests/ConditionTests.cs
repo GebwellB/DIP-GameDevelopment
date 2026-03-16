@@ -392,5 +392,45 @@ public class ConditionTests
 
     #endregion
 
+    #region At Location Compares
+
+
+    [TestCase(G_StateComparison.equal, true, G_StateComparison.equal, true, true, TestName = "Equals tree vs Equals tree")]
+    [TestCase(G_StateComparison.equal, false, G_StateComparison.equal, false, true, TestName = "Equals null vs Equals null")]
+    [TestCase(G_StateComparison.equal, false, G_StateComparison.equal, true, false, TestName = "Equals null vs Equals tree")]
+    [TestCase(G_StateComparison.equal, true, G_StateComparison.equal, false, false, TestName = "Equals tree vs Equals null")]
+
+    [TestCase(G_StateComparison.greater, true, G_StateComparison.equal, true, false, TestName = "Greater tree vs Equals tree")]
+    [TestCase(G_StateComparison.greater, false, G_StateComparison.equal, false, false, TestName = "Greater null vs Equals null")]
+    public void AtLocationConditionCompare(G_StateComparison preCompare,
+        bool validPreExpectedValue,
+        G_StateComparison effectCompare,
+        bool validEffectExpectedValue,
+        bool expectedResult)
+    {
+        LocationType tree = A.LocationType("tree");
+        G_AtLocation at_location = An.AtLocation().WithName("at_location").WithLocationType(tree);
+        LocationType preExpectedValue = null;
+        LocationType effectExpectedValue = null;
+
+        if (validPreExpectedValue)
+        {
+            preExpectedValue = tree;
+        }
+        if (validEffectExpectedValue)
+        {
+            effectExpectedValue = tree;
+        }
+        G_Condition preConiditon = A.Condition().WithState(at_location).WithComparison(preCompare).WithExpectedValue(preExpectedValue);
+
+        G_Condition effect = A.Condition().WithState(at_location).WithComparison(effectCompare).WithExpectedValue(effectExpectedValue);
+
+        bool result = preConiditon.CompareConditionToEffect(effect);
+
+        Assert.AreEqual(expectedResult, result);
+    }
+
+    #endregion
+
 }
 

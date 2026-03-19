@@ -14,13 +14,16 @@ public class Inventory : MonoBehaviour
     /// <param name="stack"></param>
     public void AddToInventory(ItemStack stack)
     {
-        if (stack.item.stackable)
+        if (stack.item != null)
         {
-            StackItem(stack);
-        }
-        else
-        {
-            inventory.Add(new ItemStack(stack));
+            if (stack.item.stackable)
+            {
+                StackItem(stack);
+            }
+            else
+            {
+                inventory.Add(new ItemStack(stack));
+            }
         }
     }
 
@@ -52,8 +55,6 @@ public class Inventory : MonoBehaviour
         }
         return foundStack;
     }
-    
-
 }
 
 ///// <summary>

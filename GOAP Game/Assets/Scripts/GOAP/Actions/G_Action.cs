@@ -12,7 +12,7 @@ namespace GOAP
 
         public List<G_Condition> preconditions = new List<G_Condition>();
 
-        internal List<G_Condition> effects = new List<G_Condition>();
+        public List<G_Condition> effects = new List<G_Condition>();
 
         public void Construct(string name, List<G_Condition> preconditions, List<G_Condition> effects, int cost = 10)
         {
@@ -30,32 +30,21 @@ namespace GOAP
         /// Receives a bunch of unmet preconditions and returns a list of any of them that are met
         /// by this Action's effects
         /// </summary>
-        /// <param name="unmetPreconditions"></param>
+        /// <param name="preconditions"></param>
         /// <returns></returns>
-        public List<G_Condition> TestEffectsAgaintsPreconditions(List<G_Condition> unmetPreconditions)
+        public bool TestEffectsAgaintsPreconditions(List<G_Condition> preconditions)
         {
-            List<G_Condition> metConditions = new List<G_Condition>();
-            for(int i = 0; i < unmetPreconditions.Count; i++)
+            bool someConditionsMet = false;
+            for(int i = 0; i < preconditions.Count; i++)
             {
-                if (DoesEffectMatch(unmetPreconditions[i]))
+                if (!preconditions[1].Met && DoesEffectMatch(preconditions[i]))
                 {
-                    MeetCondition(unmetPreconditions[i], metConditions);
+                    someConditionsMet = true;
+                    preconditions[i].Meet();
                 }
             }
 
-            return metConditions;
-        }
-
-        /// <summary>
-        /// Clones the given condition, sets it as met and then adds it to the metConditions list
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <param name="metConditions"></param>
-        void MeetCondition(G_Condition condition, List<G_Condition> metConditions)
-        {
-            G_Condition clone = G_Condition.Clone(condition);
-            clone.Meet();
-            metConditions.Add(clone);
+            return someConditionsMet;
         }
 
         /// <summary>
@@ -71,6 +60,11 @@ namespace GOAP
                 );
 
             return relevantEffect != null;
+        }
+
+        public virtual int GetCost()
+        {
+            return cost;
         }
 
         /// <summary>

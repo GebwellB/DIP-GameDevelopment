@@ -52,9 +52,9 @@ public class ActionTests
         public GameObject go;
         public Inventory inventoryComponent;
         // States
-        G_AtLocation at_location;
-        G_Inventory inventory;
-        G_BoolState is_able;
+        public G_AtLocation at_location;
+        public G_Inventory inventory;
+        public G_BoolState is_able;
 
         // Actions
         // precondition action

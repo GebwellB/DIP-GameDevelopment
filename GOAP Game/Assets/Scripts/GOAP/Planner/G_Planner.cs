@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace GOAP
 {
-    public class G_Planner
+    public static class G_Planner
     {
         public static bool GeneratePlan(G_Goal goal, G_WorldState worldState, out List<G_Action> plan)
         {
@@ -29,7 +29,7 @@ namespace GOAP
             while (true)
             {
                 poolCounter++;
-                //Debug.Log($"Iteration: {poolCounter} ==================================================================");
+                //Debug.Log($"Iteration: {poolCounter} ================================================================");
                 currentNode = nodePool[0];
                 currentNode.ProcessNode();
 

@@ -183,6 +183,15 @@ public class NodeTests
         {
             tempNodes = nodePool[1].GenerateChildNodes();
             nodePool.AddRange(tempNodes);
+
+            for(int i = 0; i < nodePool.Count; i++)
+            {
+                if (nodePool[i].IsGoalNode)
+                {
+                    continue;
+                }
+                Debug.Log($"{nodePool[i].NodeAction.name}");
+            }
         }
 
         Assert.AreEqual(endNodeCount, nodePool.Count);

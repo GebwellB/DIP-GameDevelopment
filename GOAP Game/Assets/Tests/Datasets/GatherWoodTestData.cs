@@ -94,8 +94,8 @@ namespace GOAP
         {
             #region Data Creation
             chopped_wood = An.Item("chopped_wood").IsStackable(true);
-            axe = An.Item("chopped_wood").IsStackable(false);
-            money = An.Item("chopped_wood").IsStackable(true);
+            axe = An.Item("axe").IsStackable(false);
+            money = An.Item("money").IsStackable(true);
 
             tree = A.LocationType("tree");
             workshop = A.LocationType("workshop");
@@ -123,10 +123,10 @@ namespace GOAP
             #region State Creation
 
             npc_inventory = An.InventoryState("npc_inventory").WithInventory(npc_inventory_component);
-            workshop_inventory = An.InventoryState("npc_inventory").WithInventory(workshop_inventory_component);
-            woodstock_inventory = An.InventoryState("npc_inventory").WithInventory(woodstock_inventory_component);
-            tree_inventory = An.InventoryState("npc_inventory").WithInventory(tree_inventory_component);
-            shop_inventory = An.InventoryState("npc_inventory").WithInventory(shop_inventory_component);
+            workshop_inventory = An.InventoryState("workshop_inventory").WithInventory(workshop_inventory_component);
+            woodstock_inventory = An.InventoryState("woodstock_inventory").WithInventory(woodstock_inventory_component);
+            tree_inventory = An.InventoryState("tree_inventory").WithInventory(tree_inventory_component);
+            shop_inventory = An.InventoryState("shop_inventory").WithInventory(shop_inventory_component);
             at_location = An.AtLocation().WithName("at_location").WithLocationType(null);
 
             #endregion
@@ -229,8 +229,8 @@ namespace GOAP
                     .WithExpectedValue(ItemStack.EmptyStack(chopped_wood)))
 
                 .WithPrecondition(A.Condition().WithState(npc_inventory)
-                    .WithComparison(G_StateComparison.greater)
-                    .WithExpectedValue(ItemStack.EmptyStack(money)))
+                    .WithComparison(G_StateComparison.greater_or_equal)
+                    .WithExpectedValue(new ItemStack(money, 1)))
 
                 .WithPrecondition(A.Condition().WithState(shop_inventory)
                     .WithComparison(G_StateComparison.greater)
@@ -305,11 +305,15 @@ namespace GOAP
             #endregion
         }
 
-        public void AddDataForStandardTest()
+        public void AddDataForTest(bool hasShop)
         {
             workshop_inventory_component.AddToInventory(new ItemStack(axe, 1));
             tree_inventory_component.AddToInventory(new ItemStack(chopped_wood, 10));
-            tree_inventory_component.AddToInventory(new ItemStack(chopped_wood, 10));
+            if (hasShop)
+            {
+                shop_inventory_component.AddToInventory(new ItemStack(chopped_wood, 10));
+                npc_inventory_component.AddToInventory(new ItemStack(money, 1));
+            }
         }
     }
 }

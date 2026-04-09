@@ -166,17 +166,17 @@ namespace GOAP
         /// </summary>
         public void ProcessNode()
         {
-            if(unmetPreconditions > 0 && nodeActionPool.Count > 0)
-            {
-                nodeState = G_NodeState.closed;
-            }
-            else if(unmetPreconditions == 0)
+            if (unmetPreconditions == 0)
             {
                 nodeState = G_NodeState.success;
             }
-            else if (unmetPreconditions > 0 && nodeActionPool.Count <= 0)
+            else if (nodeActionPool.Count <= 0)
             {
                 nodeState = G_NodeState.failed;
+            }
+            else
+            {
+                nodeState = G_NodeState.closed;
             }
         }
 

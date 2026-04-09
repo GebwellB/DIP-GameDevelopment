@@ -35,9 +35,9 @@ namespace GOAP
         public bool TestEffectsAgaintsPreconditions(List<G_Condition> preconditions)
         {
             bool someConditionsMet = false;
-            for(int i = 0; i < preconditions.Count; i++)
+            for (int i = 0; i < preconditions.Count; i++)
             {
-                if (!preconditions[1].Met && DoesEffectMatch(preconditions[i]))
+                if (!preconditions[i].Met && DoesEffectMatch(preconditions[i]))
                 {
                     someConditionsMet = true;
                     preconditions[i].Meet();

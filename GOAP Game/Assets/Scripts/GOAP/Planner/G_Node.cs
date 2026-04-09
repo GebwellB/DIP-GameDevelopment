@@ -38,6 +38,8 @@ namespace GOAP
         public List<G_Condition> preconditions = new List<G_Condition>();
 
         G_WorldState worldStateRef;
+        public G_WorldState WorldStateRef
+        { get { return worldStateRef; } }
 
         bool isGoalNode = false;
 
@@ -62,14 +64,13 @@ namespace GOAP
             int hCost,
             List<G_Action> nodeActionPool,
             List<G_Condition> preconditions,
-            G_WorldState worldStateRef)
+            G_WorldState worldStateRef,
+            bool processUnmetPreconditions = true)
         {
             // Parent node
             this.parentNode = parentNode;
             // Action
             this.nodeAction = nodeAction;
-            // hCost
-            this.hCost = hCost + nodeAction.GetCost();
             // ActionPool
             this.nodeActionPool = new List<G_Action>(nodeActionPool);
             this.nodeActionPool.Remove(this.nodeAction);
@@ -80,8 +81,21 @@ namespace GOAP
 
             nodeState = G_NodeState.open;
 
-            // Determine unmet preconditions
-            this.unmetPreconditions = ProcessPreconditions(this.preconditions, this.worldStateRef);
+            if (nodeAction != null)
+            {
+                // hCost
+                this.hCost = hCost + nodeAction.GetCost();
+                for (int i = 0; i < nodeAction.preconditions.Count; i++)
+                {
+                    this.preconditions.Add(G_Condition.Clone(nodeAction.preconditions[i]));
+                }
+            }
+
+            if (processUnmetPreconditions)
+            {
+                // Determine unmet preconditions
+                this.unmetPreconditions = ProcessPreconditions(this.preconditions, this.worldStateRef);
+            }
         }
 
         /// <summary>
@@ -196,10 +210,6 @@ namespace GOAP
 
             if (someConditionsMet) // If true, build new node
             {
-                for (int i = 0; i < nodeAction.preconditions.Count; i++)
-                {
-                    clonedPreconditions.Add(G_Condition.Clone(nodeAction.preconditions[i]));
-                }
                 newNode = new G_Node(this,
                     action,
                     hCost,
@@ -216,16 +226,20 @@ namespace GOAP
             List<G_Action> plan = new List<G_Action>();
 
             plan = AddToPlan(plan);
-
             return plan;
         }
 
         List<G_Action> AddToPlan(List<G_Action> plan)
         {
             plan.Add(nodeAction);
-            if(parentNode != null && !parentNode.IsGoalNode)
+            if(!parentNode.IsGoalNode && parentNode != null && nodeAction != null)
             {
                 plan = parentNode.AddToPlan(plan);
+            }
+            else if (!IsGoalNode && nodeAction == null)
+            {
+                plan = null;
+                Debug.LogWarning($"Node action was null, returning null plan");
             }
             return plan;
         }

@@ -127,7 +127,7 @@ namespace GOAP
             woodstock_inventory = An.InventoryState("npc_inventory").WithInventory(woodstock_inventory_component);
             tree_inventory = An.InventoryState("npc_inventory").WithInventory(tree_inventory_component);
             shop_inventory = An.InventoryState("npc_inventory").WithInventory(shop_inventory_component);
-            at_location = An.AtLocation().WithName("at_location");
+            at_location = An.AtLocation().WithName("at_location").WithLocationType(null);
 
             #endregion
 
@@ -231,8 +231,8 @@ namespace GOAP
                 .WithPrecondition(A.Condition().WithState(npc_inventory)
                     .WithComparison(G_StateComparison.greater)
                     .WithExpectedValue(ItemStack.EmptyStack(money)))
-                .WithPrecondition(A.Condition().WithState(shop_inventory)
 
+                .WithPrecondition(A.Condition().WithState(shop_inventory)
                     .WithComparison(G_StateComparison.greater)
                     .WithExpectedValue(ItemStack.EmptyStack(chopped_wood)))
 
@@ -303,6 +303,13 @@ namespace GOAP
             npc_world_state.goals.Add(gather_wood);
 
             #endregion
+        }
+
+        public void AddDataForStandardTest()
+        {
+            workshop_inventory_component.AddToInventory(new ItemStack(axe, 1));
+            tree_inventory_component.AddToInventory(new ItemStack(chopped_wood, 10));
+            tree_inventory_component.AddToInventory(new ItemStack(chopped_wood, 10));
         }
     }
 }

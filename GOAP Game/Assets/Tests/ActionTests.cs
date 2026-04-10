@@ -35,6 +35,7 @@ public class ActionTests
         }
 
         Assert.AreEqual(breadData.slice_bread.GetCost(), clone.GetCost());
+        Assert.AreEqual(breadData.slice_bread.GetPriority(), clone.GetPriority());
     }
 
     [Test]
@@ -80,9 +81,9 @@ public class ActionTests
             inventoryComponent.AddToInventory(new ItemStack(bread_knife, 1));
 
             // States Setup
-            is_able = A.BoolState().WithName("is_able").WithValue(true);
+            is_able = A.BoolState("is_able").WithValue(true);
             inventory = An.InventoryState("inventory").WithInventory(inventoryComponent);
-            at_location = An.AtLocation().WithName("at_location");
+            at_location = An.AtLocation("at_location");
 
 
             go_to_kitchen = An.Action("go_to_kitchen")

@@ -79,6 +79,7 @@ namespace GOAP
         public static List<G_Node> SortPool(List<G_Node> pool)
         {
             return pool.OrderBy((node) => node.NodeState)
+                .ThenBy((node) => node.Priority)
                 .ThenBy((node) => node.HCost)
                 .ToList();
         }

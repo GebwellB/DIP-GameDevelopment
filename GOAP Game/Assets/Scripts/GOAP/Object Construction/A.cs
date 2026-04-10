@@ -4,14 +4,14 @@ namespace GOAP
 {
     public static class A
     {
-        public static G_BoolStateBuilder BoolState()
+        public static G_BoolStateBuilder BoolState(string name)
         {
-            return new G_BoolStateBuilder(); 
+            return new G_BoolStateBuilder(name); 
         }
 
-        public static G_FloatStateBuilder FloatState()
+        public static G_FloatStateBuilder FloatState(string name)
         {
-            return new G_FloatStateBuilder();
+            return new G_FloatStateBuilder(name);
         }
 
         public static G_ConditionBuilder Condition()

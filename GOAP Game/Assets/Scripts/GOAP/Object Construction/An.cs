@@ -4,14 +4,14 @@ namespace GOAP
 {
     public static class An
     {
-        public static G_IntStateBuilder IntState()
+        public static G_IntStateBuilder IntState(string name)
         {
-            return new G_IntStateBuilder();
+            return new G_IntStateBuilder(name);
         }
 
-        public static G_AtLocationBuilder AtLocation()
+        public static G_AtLocationBuilder AtLocation(string name)
         {
-            return new G_AtLocationBuilder();
+            return new G_AtLocationBuilder(name);
         }
 
         public static G_InventoryBuilder InventoryState(string name)

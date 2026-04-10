@@ -9,7 +9,7 @@ public class FloatStateTests
     [Test]
     public void Clone()
     {
-        G_FloatState testState = A.FloatState().WithName("test").WithValue(5);
+        G_FloatState testState = A.FloatState("test").WithValue(5);
 
         G_State cloneState = testState.Clone();
 
@@ -42,7 +42,7 @@ public class FloatStateTests
         float testValue,
         bool expectedResult)
     {
-        G_FloatState testState = A.FloatState().WithName("test").WithValue(5);
+        G_FloatState testState = A.FloatState("test").WithValue(5);
 
         bool result = testState.TestState(testState, comparison, testValue);
 

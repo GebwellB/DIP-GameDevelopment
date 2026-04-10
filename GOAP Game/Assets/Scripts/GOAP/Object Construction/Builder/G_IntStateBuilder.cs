@@ -10,23 +10,30 @@ namespace GOAP
         #region Basic Values
         string name = "";
         int value;
+        bool isLocal = false;
 
-        public G_IntStateBuilder()
+        public G_IntStateBuilder(string name)
         {
-
+            this.name = name;
         }
         #endregion
 
         #region WithFunctions
-        public G_IntStateBuilder WithName(string name)
-        {
-            this.name = name;
-            return this;
-        }
+        //public G_IntStateBuilder WithName(string name)
+        //{
+        //    this.name = name;
+        //    return this;
+        //}
 
         public G_IntStateBuilder WithValue(int value)
         {
             this.value = value;
+            return this;
+        }
+
+        public G_IntStateBuilder IsLocal(bool isLocal)
+        {
+            this.isLocal = isLocal;
             return this;
         }
         #endregion
@@ -40,7 +47,7 @@ namespace GOAP
         public G_IntState Build()
         {
             G_IntState state = ScriptableObject.CreateInstance<G_IntState>();
-            state.Construct(name, value);
+            state.Construct(name, value, isLocal);
             return state;
         }
 

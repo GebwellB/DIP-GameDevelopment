@@ -9,7 +9,7 @@ public class IntStateTests
     [Test]
     public void Clone()
     {
-        G_IntState testState = An.IntState().WithName("test").WithValue(5);
+        G_IntState testState = An.IntState("test").WithValue(5);
 
         G_State cloneState = testState.Clone();
 
@@ -42,7 +42,7 @@ public class IntStateTests
         int testValue,
         bool expectedResult)
     {
-        G_IntState testState = An.IntState().WithName("test").WithValue(5);
+        G_IntState testState = An.IntState("test").WithValue(5);
 
         bool result = testState.TestState(testState, comparison, testValue);
 

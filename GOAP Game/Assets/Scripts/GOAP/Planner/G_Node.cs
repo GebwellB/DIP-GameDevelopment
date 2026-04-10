@@ -27,6 +27,10 @@ namespace GOAP
         public int HCost
         { get { return hCost; } }
 
+        int priority = 0;
+        public int Priority
+        { get { return priority; } }
+
         int unmetPreconditions = 0;
         public int UnmetPreconditions
         { 
@@ -85,6 +89,7 @@ namespace GOAP
             {
                 // hCost
                 this.hCost = hCost + nodeAction.GetCost();
+                this.priority = nodeAction.GetPriority();
                 for (int i = 0; i < nodeAction.preconditions.Count; i++)
                 {
                     this.preconditions.Add(G_Condition.Clone(nodeAction.preconditions[i]));

@@ -12,7 +12,7 @@ public class BoolStateTests
     {
         G_BoolState testState = ScriptableObject.CreateInstance<G_BoolState>();
 
-        testState.Construct("test", true);
+        testState.Construct("test", true, false);
 
         Assert.AreEqual("test", testState.name);
         Assert.AreEqual(true, (bool)testState.GetValue());
@@ -21,7 +21,7 @@ public class BoolStateTests
     [Test]
     public void Clone()
     {
-        G_BoolState testState = A.BoolState().WithName("test").WithValue(true);
+        G_BoolState testState = A.BoolState("test").WithValue(true);
 
         G_State cloneState = testState.Clone();
 
@@ -36,7 +36,7 @@ public class BoolStateTests
     [TestCase(false, G_StateComparison.not_equal, false, false, TestName = "Not Equal - False")]
     public void TestState(bool actualValue, G_StateComparison comparison, bool expectedValue, bool expectedResult)
     {
-        G_BoolState testState = A.BoolState().WithName("test").WithValue(actualValue);
+        G_BoolState testState = A.BoolState("test").WithValue(actualValue);
 
         bool result = testState.TestState(testState, comparison, expectedValue);
 

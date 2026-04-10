@@ -11,7 +11,7 @@ public class AtLocationTests
     public void AtLocationClone()
     {
         LocationType tree = A.LocationType("tree");
-        G_AtLocation at_location = An.AtLocation().WithName("at_location").WithLocationType(tree);
+        G_AtLocation at_location = An.AtLocation("at_location").WithLocationType(tree);
 
         G_AtLocation clone = at_location.Clone() as G_AtLocation;
 
@@ -37,7 +37,7 @@ public class AtLocationTests
         {
             expectedLocation = tree;
         }
-        G_AtLocation at_location = An.AtLocation().WithName("at_location").WithLocationType(stateLocation);
+        G_AtLocation at_location = An.AtLocation("at_location").WithLocationType(stateLocation);
 
         bool result = at_location.TestState(at_location, G_StateComparison.equal, expectedLocation);
 

@@ -20,7 +20,7 @@ public class PlannerTests
             testData.npc_world_state,
             out plan);
 
-        for(int i = 0; i < plan.Count; i++)
+        for (int i = 0; i < plan.Count; i++)
         {
             Debug.Log(plan[i].name);
         }

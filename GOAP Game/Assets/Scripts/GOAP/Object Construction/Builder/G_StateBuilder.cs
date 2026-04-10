@@ -5,29 +5,23 @@ namespace GOAP
     /// <summary>
     /// Rename with the actual class builder name that we want to create
     /// </summary>
-    public class G_InventoryBuilder
+    public class G_StateBuilder
     {
         #region Basic Values
         string name = "";
-        Inventory inventory;
         bool isLocal = false;
+        object value = null;
 
-        public G_InventoryBuilder(string name)
+        public G_StateBuilder(string name)
         {
             this.name = name;
         }
         #endregion
 
         #region WithFunctions
-        public G_InventoryBuilder WithInventory(Inventory inventory)
+        public G_StateBuilder WithValue(object value)
         {
-            this.inventory = inventory;
-            return this;
-        }
-
-        public G_InventoryBuilder IsLocal(bool isLocal)
-        {
-            this.isLocal = isLocal;
+            this.value = value;
             return this;
         }
         #endregion
@@ -38,14 +32,14 @@ namespace GOAP
         /// Replace object type with the class type we want to build
         /// </summary>
         /// <returns></returns>
-        public G_Inventory Build()
+        public G_State Build()
         {
-            G_Inventory inventoryState = ScriptableObject.CreateInstance<G_Inventory>();
-            inventoryState.Construct(name, inventory, isLocal);
-            return inventoryState;
+            G_State state = ScriptableObject.CreateInstance<G_State>();
+            state.Construct(this.name, this.value, this.isLocal);
+            return state;
         }
 
-        public static implicit operator G_Inventory(G_InventoryBuilder builder)
+        public static implicit operator G_State(G_StateBuilder builder)
         {
             return builder.Build();
         }

@@ -127,7 +127,7 @@ namespace GOAP
             woodstock_inventory = An.InventoryState("woodstock_inventory").WithInventory(woodstock_inventory_component);
             tree_inventory = An.InventoryState("tree_inventory").WithInventory(tree_inventory_component);
             shop_inventory = An.InventoryState("shop_inventory").WithInventory(shop_inventory_component);
-            at_location = An.AtLocation().WithName("at_location").WithLocationType(null);
+            at_location = An.AtLocation("at_location").WithLocationType(null);
 
             #endregion
 
@@ -159,7 +159,8 @@ namespace GOAP
                 .WithEffect(A.Condition().WithState(at_location)
                     .WithExpectedValue(woodstock))
 
-                .WithCost(10);
+                .WithCost(10)
+                .WithPriority(1);
 
 
             chop_tree = An.Action("chop_tree")
@@ -188,7 +189,8 @@ namespace GOAP
                 .WithEffect(A.Condition().WithState(at_location)
                     .WithExpectedValue(tree))
 
-                .WithCost(10);
+                .WithCost(10)
+                .WithPriority(1);
 
 
             take_axe = An.Action("take_axe")
@@ -220,7 +222,8 @@ namespace GOAP
                .WithEffect(A.Condition().WithState(at_location)
                    .WithExpectedValue(workshop))
 
-               .WithCost(10);
+               .WithCost(10)
+               .WithPriority(1);
 
 
             buy_wood = An.Action("buy_wood")
@@ -261,7 +264,8 @@ namespace GOAP
                .WithEffect(A.Condition().WithState(at_location)
                    .WithExpectedValue(shop))
 
-               .WithCost(10);
+               .WithCost(10)
+               .WithPriority(1);
 
             #endregion
 

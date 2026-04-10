@@ -8,18 +8,22 @@ namespace GOAP
     public class BuilderTemplate
     {
         #region Basic Values
+
+        // Any vales to be transffered to the built object
         string name = "";
+        bool isLocal = false;
+        object value = null;
 
-        public BuilderTemplate()
+        public BuilderTemplate(string name)
         {
-
+            this.name = name;
         }
         #endregion
 
         #region WithFunctions
-        public BuilderTemplate WithName(string name)
+        public BuilderTemplate WithValue(object value)
         {
-            this.name = name;
+            this.value = value;
             return this;
         }
         #endregion

@@ -135,6 +135,7 @@ namespace GOAP
             if(expectedValue.managedReferenceValue != null)
             {
                 expectedValue.managedReferenceValue = null;
+                property.FindPropertyRelative("serializedExpectedValue").stringValue = "";
             }
 
             SerializedProperty expectedReference = property.FindPropertyRelative("expectedReference");
@@ -145,6 +146,7 @@ namespace GOAP
             {
                 expectedReference.objectReferenceValue = null;
                 property.FindPropertyRelative("useExpectedReference").boolValue = true;
+                property.FindPropertyRelative("serializedExpectedValue").stringValue = "";
             }
 
             if(comparison.enumValueIndex != (int)G_StateComparison.equal)

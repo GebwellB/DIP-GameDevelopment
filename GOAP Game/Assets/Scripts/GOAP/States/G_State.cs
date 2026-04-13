@@ -35,6 +35,11 @@ namespace GOAP
             return clone;
         }
 
+        public virtual object ConvertSerializedStringToValue(string serializedString)
+        {
+            return null;
+        }
+
         #endregion
 
         #region Testing Controls
@@ -91,6 +96,11 @@ namespace GOAP
         public virtual int GetEditorHeight()
         {
             return 3;
+        }
+
+        public virtual bool NeedsEditorValidation()
+        {
+            return false;
         }
 
         public virtual void Editor(G_ConditionEditor propertyDrawer,

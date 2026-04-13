@@ -6,7 +6,7 @@ using UnityEditor;
 namespace GOAP
 {
     [System.Serializable]
-    public class G_Condition
+    public class G_Condition : ISerializationCallbackReceiver
     {
         #region Variables
 
@@ -56,6 +56,11 @@ namespace GOAP
         {
             get { return met; }
         }
+
+        [SerializeField]
+        [HideInInspector]
+        string serializedExpectedValue = "";
+
         #endregion
 
         public G_Condition(G_State state,
@@ -199,13 +204,57 @@ namespace GOAP
             return state != null && state.isLocal;
         }
 
+        void ISerializationCallbackReceiver.OnBeforeSerialize() { }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            if(serializedExpectedValue.Length > 0
+                && state != null)
+            {
+                expectedValue = state.ConvertSerializedStringToValue(serializedExpectedValue);
+            }
+        }
+
         #endregion
 
+#if UNITY_EDITOR
         #region Editor
+
+        public void ClearExpectedValue()
+        {
+            expectedValue = null;
+        }
 
         [SerializeField] bool editorActive = false;
 
+        public static void ValidateReferenceConditions(List<G_Condition> conditions, out int trackerCount)
+        {
+            List<object> compareValues = new List<object>();
+
+            for (int i = 0; i < conditions.Count; i++)
+            {
+                ValidPrecondition(conditions[i], compareValues);
+            }
+            trackerCount = conditions.Count;
+        }
+
+        static void ValidPrecondition(G_Condition condition, List<object> compareValues)
+        {
+            if(condition.State != null && condition.State.NeedsEditorValidation())
+            {
+                if (compareValues.Contains(condition.ExpectedValue))
+                {
+                    condition.ClearExpectedValue();
+                }
+                else
+                {
+                    compareValues.Add(condition.ExpectedValue);
+                }
+            }
+        }
+
         #endregion
+#endif
 
     }
 }

@@ -9,47 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c84069e33e5c7964aafd70b9ab8192db, type: 3}
-  m_Name: Test Action
-  m_EditorClassIdentifier: Main::GOAP.G_Action
-  preconditions:
-  - state: {fileID: 11400000, guid: d75b2bba712813542a333a18296e09d3, type: 2}
-    comparison: 0
-    expectedValue:
-      rid: 824929796005036412
-    expectedReference: {fileID: 0}
-    useExpectedReference: 1
-    serializedExpectedValue: bFalse
-    editorActive: 1
-  - state: {fileID: 11400000, guid: fa7cfc9b626376c4b92f62da2d02579a, type: 2}
-    comparison: 3
-    expectedValue:
-      rid: 824929796005036413
-    expectedReference: {fileID: 0}
-    useExpectedReference: 1
-    serializedExpectedValue: f4
-    editorActive: 1
-  - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
-    comparison: 3
-    expectedValue:
-      rid: 824929796005036402
-    expectedReference: {fileID: 0}
-    useExpectedReference: 1
-    serializedExpectedValue: 
-    editorActive: 1
-  - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
-    comparison: 3
-    expectedValue:
-      rid: 824929796005036411
-    expectedReference: {fileID: 0}
-    useExpectedReference: 1
-    serializedExpectedValue: 
-    editorActive: 1
-  effects:
+  m_Script: {fileID: 11500000, guid: a6b950beab6b78b4f807207e6483d9d4, type: 3}
+  m_Name: Test Goal
+  m_EditorClassIdentifier: Main::GOAP.G_Goal
+  priority: 1
+  triggerConditions:
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
     comparison: 0
     expectedValue:
-      rid: 824929796005036327
+      rid: 824929796005036414
     expectedReference: {fileID: 0}
     useExpectedReference: 1
     serializedExpectedValue: 
@@ -57,7 +25,16 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
     comparison: 0
     expectedValue:
-      rid: 824929796005036340
+      rid: 824929796005036416
+    expectedReference: {fileID: 0}
+    useExpectedReference: 1
+    serializedExpectedValue: 
+    editorActive: 1
+  goalEffects:
+  - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
+    comparison: 0
+    expectedValue:
+      rid: 824929796005036415
     expectedReference: {fileID: 0}
     useExpectedReference: 1
     serializedExpectedValue: 
@@ -65,7 +42,7 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
     comparison: 0
     expectedValue:
-      rid: 824929796005036353
+      rid: 824929796005036417
     expectedReference: {fileID: 0}
     useExpectedReference: 1
     serializedExpectedValue: 
@@ -73,34 +50,23 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 824929796005036327
+    - rid: 824929796005036414
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 5317107508149834c8159dff841ea9c0, type: 2}
-        quantity: 2
-    - rid: 824929796005036340
+        quantity: 5
+    - rid: 824929796005036415
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 9a0ac053276d29f48a54022f94fd2dd0, type: 2}
-        quantity: 3
-    - rid: 824929796005036353
+        quantity: 4
+    - rid: 824929796005036416
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 0}
         quantity: 0
-    - rid: 824929796005036402
-      type: {class: ItemStack, ns: , asm: Main}
-      data:
-        item: {fileID: 11400000, guid: 5317107508149834c8159dff841ea9c0, type: 2}
-        quantity: 2
-    - rid: 824929796005036411
+    - rid: 824929796005036417
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 0}
         quantity: 0
-    - rid: 824929796005036412
-      type: {class: Boolean, ns: System, asm: mscorlib}
-      data: 
-    - rid: 824929796005036413
-      type: {class: Single, ns: System, asm: mscorlib}
-      data: 

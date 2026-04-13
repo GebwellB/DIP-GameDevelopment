@@ -25,6 +25,9 @@ public class PlannerTests
             Debug.Log(plan[i].name);
         }
 
+        // ALWAYS REMEMBER TO CHECK DATA BEFORE SPENDING HOURS DIGGING THROUGH CODE.
+        // IT'S ALWAYS THE DATA THAT I BREAK.
+
         if (useShopPlan)
         {
             Assert.AreEqual(true, plan != null);

@@ -421,9 +421,9 @@ public class ConditionTests
         {
             effectExpectedValue = tree;
         }
-        G_Condition preConiditon = A.Condition().WithState(at_location).WithComparison(preCompare).WithExpectedValue(preExpectedValue);
+        G_Condition preConiditon = A.Condition().WithState(at_location).WithComparison(preCompare).WithExpectedReference(preExpectedValue);
 
-        G_Condition effect = A.Condition().WithState(at_location).WithComparison(effectCompare).WithExpectedValue(effectExpectedValue);
+        G_Condition effect = A.Condition().WithState(at_location).WithComparison(effectCompare).WithExpectedReference(effectExpectedValue);
 
         bool result = preConiditon.CompareConditionToEffect(effect);
 

@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEditor;
 using GOAP;
 
 namespace GOAP
 {
+    [CreateAssetMenu(fileName = "New At Location State", menuName = "GOAP/States/At Location State")]
     public class G_AtLocation : G_State
     {
         [SerializeField]
@@ -61,8 +63,8 @@ namespace GOAP
         public override bool TestStateConditionMatch(G_Condition precondition, G_Condition effect)
         {
             bool success = false;
-            LocationType preLocation = precondition.ExpectedValue as LocationType;
-            LocationType effectLocation = effect.ExpectedValue as LocationType;
+            LocationType preLocation = precondition.ExpectedReference as LocationType;
+            LocationType effectLocation = effect.ExpectedReference as LocationType;
 
             if (StateSupportsComparion(precondition.Comparison) && StateSupportsComparion(effect.Comparison))
             {
@@ -111,5 +113,70 @@ namespace GOAP
         }
 
         #endregion
+
+#if UNITY_EDITOR
+
+        #region Editor
+
+        public override int GetEditorHeight()
+        {
+            return 3;
+        }
+
+        public override void Editor(G_ConditionEditor propertyDrawer,
+            ref float height,
+            Rect position,
+            SerializedProperty property,
+            GUIContent label)
+        {
+            position = propertyDrawer.GetFormattedRect(position, property, label);
+            EditorGUI.BeginChangeCheck();
+            SerializedProperty expectedValue = property.FindPropertyRelative("expectedValue");
+            if(expectedValue.managedReferenceValue != null)
+            {
+                expectedValue.managedReferenceValue = null;
+            }
+
+            SerializedProperty expectedReference = property.FindPropertyRelative("expectedReference");
+            SerializedProperty comparison = property.FindPropertyRelative("comparison");
+
+            if (expectedReference.objectReferenceValue != null
+                && !(expectedReference.objectReferenceValue is LocationType))
+            {
+                expectedReference.objectReferenceValue = null;
+                property.FindPropertyRelative("useExpectedReference").boolValue = true;
+            }
+
+            if(comparison.enumValueIndex != (int)G_StateComparison.equal)
+            {
+                comparison.enumValueIndex = (int)G_StateComparison.equal;
+            }
+
+            //Rect objectFieldRect = new Rect(position.x + position.width * 0.75f,
+            //    position.y,
+            //    position.width * 0.25f,
+            //    position.height);
+
+            expectedReference.objectReferenceValue = EditorGUI.ObjectField(position,
+                new GUIContent("at"),
+                (LocationType)expectedReference.objectReferenceValue,
+                typeof(LocationType), false);
+
+            //if (editorValue != (LocationType)expectedValue.managedReferenceValue)
+            //{
+            //    expectedValue.objectReferenceValue = editorValue;
+            //}
+
+            propertyDrawer.IncrementHeight(out height, property, label);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                property.serializedObject.ApplyModifiedProperties();
+            }
+        }
+
+        #endregion
+
+#endif
     }
 }

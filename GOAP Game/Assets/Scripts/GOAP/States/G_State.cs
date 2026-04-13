@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor;
 using GOAP;
 
 namespace GOAP
@@ -82,5 +83,28 @@ namespace GOAP
         }
 
         #endregion
+
+#if UNITY_EDITOR
+
+        #region Editor
+
+        public virtual int GetEditorHeight()
+        {
+            return 3;
+        }
+
+        public virtual void Editor(G_ConditionEditor propertyDrawer,
+            ref float height,
+            Rect position,
+            SerializedProperty property,
+            GUIContent label)
+        {
+            EditorGUI.LabelField(position, "No GUI Implement for this State type");
+            propertyDrawer.IncrementHeight(out height, property, label);
+        }
+
+        #endregion
+
+#endif
     }
 }

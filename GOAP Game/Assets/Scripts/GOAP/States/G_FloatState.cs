@@ -1,4 +1,5 @@
 using NUnit.Framework.Internal;
+using UnityEditor;
 using UnityEngine;
 
 namespace GOAP
@@ -97,6 +98,69 @@ namespace GOAP
         #region Conditions
 
         #endregion
+
+#if UNITY_EDITOR
+
+        #region Editor
+
+        public override int GetEditorHeight()
+        {
+            return 3;
+        }
+
+        public override void Editor(G_ConditionEditor propertyDrawer,
+            ref float height,
+            Rect position,
+            SerializedProperty property,
+            GUIContent label)
+        {
+            position = propertyDrawer.GetFormattedRect(position, property, label);
+            EditorGUI.BeginChangeCheck();
+
+            SerializedProperty expectedValue = property.FindPropertyRelative("expectedValue");
+            SerializedProperty comparison = property.FindPropertyRelative("comparison");
+
+            if (expectedValue.managedReferenceValue == null
+                || !(expectedValue.managedReferenceValue is float))
+            {
+                expectedValue.managedReferenceValue = null;
+                expectedValue.managedReferenceValue = 0f;
+                property.FindPropertyRelative("expectedReference").objectReferenceValue = null;
+                property.FindPropertyRelative("useExpectedReference").boolValue = true;
+            }
+
+            Rect comparisonRect = new Rect(position.x,
+                position.y,
+                position.width * 0.75f,
+                position.height);
+
+            comparison.enumValueIndex = (int)(G_StateComparison)EditorGUI.EnumPopup(comparisonRect,
+                 new GUIContent("is"),
+                 (G_StateComparison)comparison.enumValueIndex,
+                 (option) => StateSupportsComparion((G_StateComparison)option));
+
+            Rect floatFieldRect = new Rect(position.x + position.width * 0.75f,
+                position.y,
+                position.width * 0.25f,
+                position.height);
+            float editorValue = EditorGUI.FloatField(floatFieldRect, (float)expectedValue.managedReferenceValue);
+
+            if (editorValue != (float)expectedValue.managedReferenceValue)
+            {
+                expectedValue.managedReferenceValue = editorValue;
+            }
+
+            propertyDrawer.IncrementHeight(out height, property, label);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                property.serializedObject.ApplyModifiedProperties();
+            }
+        }
+
+        #endregion
+
+#endif
     }
 }
 

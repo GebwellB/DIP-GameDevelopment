@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GOAP
 {
-    [CreateAssetMenu(fileName = "G_Goal", menuName = "Scriptable Objects/G_Goal")]
+    [CreateAssetMenu(fileName = "G_Goal", menuName = "GOAP/Goals/Base Goal")]
     public class G_Goal : ScriptableObject
     {
         public int priority = 0;
@@ -19,6 +19,18 @@ namespace GOAP
             this.triggerConditions = triggerConditions;
             this.goalEffects = goalEffects;
             this.priority = priority;
+        }
+
+        public void TransferToLocalWorldStates(List<G_State> localStates)
+        {
+            for (int i = 0; i < triggerConditions.Count; i++)
+            {
+                triggerConditions[i].TrySwitchToLocalState(localStates);
+            }
+            for (int i = 0; i < goalEffects.Count; i++)
+            {
+                goalEffects[i].TrySwitchToLocalState(localStates);
+            }
         }
 
         public virtual G_Goal Clone()

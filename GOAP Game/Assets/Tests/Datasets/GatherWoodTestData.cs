@@ -139,7 +139,7 @@ namespace GOAP
                     .WithExpectedValue(new ItemStack(chopped_wood, 10)))
 
                 .WithPrecondition(A.Condition().WithState(at_location)
-                    .WithExpectedValue(woodstock))
+                    .WithExpectedReference(woodstock))
 
 
                 .WithEffect(A.Condition().WithState(woodstock_inventory)
@@ -157,7 +157,7 @@ namespace GOAP
             go_to_woodstock = An.Action("go_to_woodstock")
 
                 .WithEffect(A.Condition().WithState(at_location)
-                    .WithExpectedValue(woodstock))
+                    .WithExpectedReference(woodstock))
 
                 .WithCost(10)
                 .WithPriority(1);
@@ -169,7 +169,7 @@ namespace GOAP
                     .WithExpectedValue(ItemStack.EmptyStack(axe)))
 
                 .WithPrecondition(A.Condition().WithState(at_location)
-                    .WithExpectedValue(tree))
+                    .WithExpectedReference(tree))
 
 
                 .WithEffect(A.Condition().WithState(npc_inventory)
@@ -203,7 +203,7 @@ namespace GOAP
                     .WithExpectedValue(ItemStack.EmptyStack(axe)))
 
                 .WithPrecondition(A.Condition().WithState(at_location)
-                    .WithExpectedValue(workshop))
+                    .WithExpectedReference(workshop))
 
 
                 .WithEffect(A.Condition().WithState(npc_inventory)
@@ -220,7 +220,7 @@ namespace GOAP
             go_to_workshop = An.Action("go_to_workshop")
 
                .WithEffect(A.Condition().WithState(at_location)
-                   .WithExpectedValue(workshop))
+                   .WithExpectedReference(workshop))
 
                .WithCost(10)
                .WithPriority(1);
@@ -240,7 +240,7 @@ namespace GOAP
                     .WithExpectedValue(ItemStack.EmptyStack(chopped_wood)))
 
                 .WithPrecondition(A.Condition().WithState(at_location)
-                    .WithExpectedValue(shop))
+                    .WithExpectedReference(shop))
 
 
                 .WithEffect(A.Condition().WithState(npc_inventory)
@@ -262,7 +262,7 @@ namespace GOAP
             go_to_shop = An.Action("go_to_shop")
 
                .WithEffect(A.Condition().WithState(at_location)
-                   .WithExpectedValue(shop))
+                   .WithExpectedReference(shop))
 
                .WithCost(10)
                .WithPriority(1);

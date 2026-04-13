@@ -1,11 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace GOAP
 {
+    [System.Serializable]
     public class G_Condition
     {
         #region Variables
+
         // The state being tested by the condition
+        [SerializeField]
         G_State state;
         public G_State State
         {
@@ -13,6 +19,7 @@ namespace GOAP
         }
 
         // The actual comparison for the condition
+        [SerializeField]
         G_StateComparison comparison;
         public G_StateComparison Comparison
         {
@@ -20,10 +27,27 @@ namespace GOAP
         }
 
         // The value we will be comparing to the current value in the state
+        [SerializeReference]
         object expectedValue;
         public object ExpectedValue
         {
             get { return expectedValue; }
+        }
+
+        // The value we will be comparing to the current value in the state
+        [SerializeReference]
+        Object expectedReference;
+        public Object ExpectedReference
+        {
+            get { return expectedReference; }
+        }
+
+        // Has the coniditon been met during planning?
+        [SerializeField]
+        bool useExpectedReference = false;
+        public bool UseExpectedReference
+        {
+            get { return useExpectedReference; }
         }
 
         // Has the coniditon been met during planning?
@@ -34,10 +58,17 @@ namespace GOAP
         }
         #endregion
 
-        public G_Condition(G_State state, object expectedValue, G_StateComparison comparison = G_StateComparison.equal, bool met = false)
+        public G_Condition(G_State state,
+            object expectedValue,
+            Object expectedReference,
+            bool useExpectedReference,
+            G_StateComparison comparison = G_StateComparison.equal,
+            bool met = false)
         {
             this.state = state;
             this.expectedValue = expectedValue;
+            this.expectedReference = expectedReference;
+            this.useExpectedReference = useExpectedReference;
             this.comparison = comparison;
             this.met = met;
         }
@@ -69,7 +100,14 @@ namespace GOAP
         /// <returns></returns>
         public bool DoesStateMeetCondition()
         {
-            return state.TestState(state, comparison, expectedValue);
+            if(useExpectedReference)
+            {
+                return state.TestState(state, comparison, expectedReference);
+            }
+            else
+            {
+                return state.TestState(state, comparison, expectedValue);
+            }
         }
 
         /// <summary>
@@ -84,7 +122,14 @@ namespace GOAP
 
             if (state.TestValueMatch(stateToTest.GetValue()))
             {
-                success = state.TestState(stateToTest, comparison, expectedValue);
+                if (useExpectedReference)
+                {
+                    success = state.TestState(stateToTest, comparison, expectedReference);
+                }
+                else
+                {
+                    success = state.TestState(stateToTest, comparison, expectedValue);
+                }
             }
             else
             {
@@ -117,15 +162,50 @@ namespace GOAP
             met = false;
         }
 
+        public void SetState(G_State state)
+        {
+            this.state = state;
+        }
+
+        public void TrySwitchToLocalState(List<G_State> localStates)
+        {
+            if(CanSwitchToLocalState())
+            {
+                G_State stateHolder = localStates.Find((localState) => this.IsStateTheConditionState(localState));
+
+                if(stateHolder != null)
+                {
+                    this.SetState(stateHolder);
+                }
+            }
+        }
+
         public static G_Condition Clone(G_Condition conditionToClone)
         {
             return A.Condition()
                 .WithState(conditionToClone.state)
                 .WithComparison(conditionToClone.comparison)
                 .WithExpectedValue(conditionToClone.expectedValue)
+                .WithExpectedReference(conditionToClone.expectedReference, conditionToClone.useExpectedReference)
                 .WithMet(conditionToClone.met);
         }
 
         #endregion
+
+        #region Conditions
+
+        bool CanSwitchToLocalState()
+        {
+            return state != null && state.isLocal;
+        }
+
+        #endregion
+
+        #region Editor
+
+        [SerializeField] bool editorActive = false;
+
+        #endregion
+
     }
 }

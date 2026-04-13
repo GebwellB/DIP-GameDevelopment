@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GOAP
 {
-    [CreateAssetMenu(fileName = "G_Action", menuName = "Scriptable Objects/G_Action")]
+    [CreateAssetMenu(fileName = "G_Action", menuName = "GOAP/Actions/Base Action")]
     public class G_Action : ScriptableObject
     {
 
@@ -77,6 +77,18 @@ namespace GOAP
         public virtual int GetPriority()
         {
             return priority;
+        }
+
+        public void TransferToLocalWorldStates(List<G_State> localStates)
+        {
+            for (int i = 0; i < preconditions.Count; i++)
+            {
+                preconditions[i].TrySwitchToLocalState(localStates);
+            }
+            for (int i = 0; i < effects.Count; i++)
+            {
+                effects[i].TrySwitchToLocalState(localStates);
+            }
         }
 
         /// <summary>

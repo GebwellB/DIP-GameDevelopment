@@ -24,6 +24,16 @@ public class ActionTests
             Assert.AreEqual(breadData.slice_bread.preconditions[i].State, clone.preconditions[i].State);
             Assert.AreEqual(breadData.slice_bread.preconditions[i].Comparison, clone.preconditions[i].Comparison);
             Assert.AreEqual(breadData.slice_bread.preconditions[i].ExpectedValue, clone.preconditions[i].ExpectedValue);
+
+            Assert.AreEqual(breadData.slice_bread.preconditions[i].UseExpectedReference, clone.preconditions[i].UseExpectedReference);
+            if (breadData.slice_bread.preconditions[i].UseExpectedReference)
+            {
+                Assert.AreEqual(breadData.slice_bread.preconditions[i].ExpectedReference, clone.preconditions[i].ExpectedReference);
+            }
+            else
+            {
+                Assert.AreEqual(breadData.slice_bread.preconditions[i].ExpectedValue, clone.preconditions[i].ExpectedValue);
+            }
         }
 
         Assert.AreEqual(breadData.slice_bread.effects.Count, clone.effects.Count);
@@ -32,6 +42,16 @@ public class ActionTests
             Assert.AreEqual(breadData.slice_bread.effects[i].State, clone.effects[i].State);
             Assert.AreEqual(breadData.slice_bread.effects[i].Comparison, clone.effects[i].Comparison);
             Assert.AreEqual(breadData.slice_bread.effects[i].ExpectedValue, clone.effects[i].ExpectedValue);
+
+            Assert.AreEqual(breadData.slice_bread.effects[i].UseExpectedReference, clone.effects[i].UseExpectedReference);
+            if (breadData.slice_bread.effects[i].UseExpectedReference)
+            {
+                Assert.AreEqual(breadData.slice_bread.effects[i].ExpectedReference, clone.effects[i].ExpectedReference);
+            }
+            else
+            {
+                Assert.AreEqual(breadData.slice_bread.effects[i].ExpectedValue, clone.effects[i].ExpectedValue);
+            }
         }
 
         Assert.AreEqual(breadData.slice_bread.GetCost(), clone.GetCost());
@@ -87,7 +107,7 @@ public class ActionTests
 
 
             go_to_kitchen = An.Action("go_to_kitchen")
-                .WithEffect(A.Condition().WithState(at_location).WithExpectedValue(kitchen));
+                .WithEffect(A.Condition().WithState(at_location).WithExpectedReference(kitchen));
 
             slice_bread = An.Action("slice_bread")
                 .WithPrecondition(A.Condition()
@@ -95,7 +115,7 @@ public class ActionTests
                 .WithPrecondition(A.Condition()
                 .WithState(inventory).WithComparison(G_StateComparison.greater).WithExpectedValue(ItemStack.EmptyStack(bread)))
                 .WithPrecondition(A.Condition()
-                .WithState(at_location).WithExpectedValue(kitchen))
+                .WithState(at_location).WithExpectedReference(kitchen))
                 .WithPrecondition(A.Condition()
                 .WithState(is_able).WithExpectedValue(true))
 

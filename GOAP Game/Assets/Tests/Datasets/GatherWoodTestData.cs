@@ -187,7 +187,7 @@ namespace GOAP
             go_to_tree = An.Action("go_to_tree")
 
                 .WithEffect(A.Condition().WithState(at_location)
-                    .WithExpectedValue(tree))
+                    .WithExpectedReference(tree))
 
                 .WithCost(10)
                 .WithPriority(1);

@@ -1,11 +1,39 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using GOAP;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
     List<ItemStack> inventory = new List<ItemStack>();
+    MapInjector mapInjector = new MapInjector();
+
+    [SerializeField] G_Inventory refInventoryState;
+    [SerializeField] G_Inventory inventoryState;
+
+    private void Awake() // When object is loaded
+    {
+        mapInjector.FindAndInjectObject(transform.position, this);
+        if(refInventoryState != null)
+        {
+            AssignWorldState();
+        }
+    }
+
+    void AssignWorldState()
+    {
+        if (refInventoryState.isLocal)
+        {
+            inventoryState = refInventoryState.Clone() as G_Inventory;
+        }
+        inventoryState.SetValue(this);
+    }
+
+    public G_Inventory GetWorldState()
+    {
+        return inventoryState;
+    }
 
     /// <summary>
     /// For adding items to the Inventory. If it finds the item type in the inventory, it will add to the stack of that item

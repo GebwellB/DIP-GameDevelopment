@@ -94,24 +94,60 @@ public class Inventory : MonoBehaviour
 
     #region Trade
 
-    public ItemStack Trade(ItemStack requestedItem, ItemStack offeredItem, bool requestFullQuantity)
+    public bool IsTradeValid(ItemStack requestedItem, ItemStack offeredItem, bool requestFullQuantity)
     {
-        ItemStack receivedItem = null;
+        bool isValid = false;
+
+        if (IsTrade(requestedItem, offeredItem)) // Trade
+        {
+            if (CanTakeFromInventory(requestedItem, requestFullQuantity))
+            {
+                isValid = true;
+            }
+        }
+        else if (IsTake(requestedItem, offeredItem)) // Take
+        {
+            if (CanTakeFromInventory(requestedItem, requestFullQuantity))
+            {
+                isValid = true;
+            }
+        }
+        else if (IsGive(requestedItem, offeredItem)) // Give
+        {
+            isValid = true;
+        }
+
+        return isValid;
+    }
+
+    public bool Trade(ItemStack requestedItem, ItemStack offeredItem, bool requestFullQuantity, out ItemStack receivedItem)
+    {
+        bool succeeded = false;
+        receivedItem = null;
 
         if (IsTrade(requestedItem, offeredItem)) // Trade
         {
             receivedItem = TradeItem(requestedItem, offeredItem, requestFullQuantity);
+            if(receivedItem != null)
+            {
+                succeeded = true;
+            }
         }
         else if(IsTake(requestedItem, offeredItem)) // Take
         {
             receivedItem = TakeItem(requestedItem, requestFullQuantity);
+            if (receivedItem != null)
+            {
+                succeeded = true;
+            }
         }
         else if (IsGive(requestedItem, offeredItem)) // Give
         {
             GiveItem(offeredItem);
+            succeeded = true;
         }
 
-        return receivedItem;
+        return succeeded;
     }
 
     ItemStack TradeItem(ItemStack requestedItem, ItemStack offeredItem, bool requestFullQuantity)
@@ -146,33 +182,35 @@ public class Inventory : MonoBehaviour
 
     #region Conditions
 
-    bool IsTrade(ItemStack requestedItem, ItemStack offeredItem)
+    public bool IsTrade(ItemStack requestedItem, ItemStack offeredItem)
     {
-        return RequestedItemIsValid(requestedItem) && OfferedItemIsValid(offeredItem);
+        return IsStackValid(requestedItem) && IsStackValid(offeredItem);
     }
 
-    bool IsTake(ItemStack requestedItem, ItemStack offeredItem)
+    public bool IsTake(ItemStack requestedItem, ItemStack offeredItem)
     {
-        return RequestedItemIsValid(requestedItem) && offeredItem == null;
+        return IsStackValid(requestedItem) && offeredItem == null;
     }
 
-    bool IsGive(ItemStack requestedItem, ItemStack offeredItem)
+    public bool IsGive(ItemStack requestedItem, ItemStack offeredItem)
     {
-        return requestedItem == null && OfferedItemIsValid(offeredItem);
+        return requestedItem == null && IsStackValid(offeredItem);
     }
 
-    bool RequestedItemIsValid(ItemStack requestedItem)
+    public bool IsStackValid(ItemStack stack)
     {
-        return requestedItem != null && requestedItem.item != null;
+        return stack != null && stack.item != null;
     }
 
-    bool OfferedItemIsValid(ItemStack offeredItem)
+    public bool CanTakeFromInventory(ItemStack requestedItem, ItemStack foundItem, bool requestFullQuantity)
     {
-        return offeredItem != null && offeredItem.item != null;
+        return foundItem != null
+                && InventoryHasQuantity(foundItem, requestedItem, requestFullQuantity);
     }
 
-    bool CanTakeFromInventory(ItemStack requestedItem, ItemStack foundItem, bool requestFullQuantity)
+    public bool CanTakeFromInventory(ItemStack requestedItem, bool requestFullQuantity)
     {
+        ItemStack foundItem = FindInInventory(requestedItem.item);
         return foundItem != null
                 && InventoryHasQuantity(foundItem, requestedItem, requestFullQuantity);
     }

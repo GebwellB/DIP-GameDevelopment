@@ -20,6 +20,7 @@ namespace GOAP
         MapInjector mapInjector = new MapInjector();
         Map map;
         NPCPathing pathing;
+        Inventory inventory;
 
         [Header("Action Running")]
         G_Action currentAction;
@@ -41,14 +42,47 @@ namespace GOAP
         {
             CreateLocalWorldState();
             NPCPathing pathing = GetComponent<NPCPathing>();
+            
             if(pathing != null)
             {
                 pathing.Init(this);
                 this.pathing = pathing;
             }
+
+            Inventory inventory = GetComponent<Inventory>();
+            if (inventory != null)
+            {
+                this.inventory = inventory;
+            }
+
+            for(int i = 0; i < localWorldState.states.Count; i++)
+            {
+                if (localWorldState.states[i] != null
+                    && localWorldState.states[i] is G_Inventory inventoryState)
+                {
+                    AssignInventoryState(inventoryState);
+                }
+            }
+
             if (isTest)
             {
                 StartTest();
+            }
+        }
+
+        void AssignInventoryState(G_Inventory inventoryState)
+        {
+            if (inventoryState.name == inventory.GetWorldState().name)
+            {
+                inventoryState.SetValue(inventory);
+            }
+            else
+            {
+                Inventory foundInventory = map.FindNearestObjectOfType(transform.position, inventoryState);
+                if (foundInventory != null)
+                {
+                    inventoryState.SetValue(foundInventory);
+                }
             }
         }
 
@@ -208,6 +242,11 @@ namespace GOAP
         public NPCPathing GetPathing()
         {
             return pathing;
+        }
+
+        public Inventory GetInventory()
+        {
+            return inventory;
         }
 
         #endregion

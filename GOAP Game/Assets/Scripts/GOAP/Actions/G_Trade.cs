@@ -1,7 +1,10 @@
+using log4net;
+using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace GOAP
 {
@@ -10,18 +13,24 @@ namespace GOAP
     {
         #region Data
         [Header("Trade")]
+        [SerializeField] G_Inventory targetInventory;
         [SerializeField] ItemStack requestedItem = new ItemStack();
         [SerializeField] ItemStack offeredItem = new ItemStack();
         [SerializeField] bool requestFullQuantity = true;
         [SerializeField] float tradeTime = 0.3f;
+        float tradeEndTime = 0f;
 
-        [Header("Extract")]
+        Inventory targetInventoryRef;
+        Inventory localInventory;
+
+    [Header("Extract")]
         [SerializeField] bool isExtraction = false;
         //[SerializeField] string extractionAnimationName = ""; // For implemention animations on extractions, like chopping down a tree
 
         public void Construct(string name,
             List<G_Condition> preconditions,
             List<G_Condition> effects,
+            G_Inventory targetInventory,
             ItemStack requestedItem,
             ItemStack offeredItem,
             bool requestFullQuantity,
@@ -31,6 +40,7 @@ namespace GOAP
             int priority = 0)
         {
             Construct(name, preconditions, effects, cost, priority);
+            this.targetInventory = targetInventory;
             this.requestedItem = requestedItem;
             this.offeredItem = offeredItem;
             this.requestFullQuantity = requestFullQuantity;
@@ -39,6 +49,91 @@ namespace GOAP
         }
 
         #endregion
+
+        #region Behaviour
+
+        internal override void StartActionContents(NPCGOAPHandler NPC)
+        {
+            targetInventoryRef = NPC.GetLocalWorldState().FindState(targetInventory).GetValue() as Inventory;
+            localInventory = NPC.GetInventory();
+
+            bool targetTradeValid = targetInventoryRef.IsTradeValid(requestedItem, offeredItem, requestFullQuantity);
+            bool selfTradeValid = true;
+            if(localInventory.IsStackValid(offeredItem))
+            {
+                selfTradeValid = localInventory.CanTakeFromInventory(offeredItem, true);
+            }
+
+            Debug.Log($"targetTradeValid {targetTradeValid} and selfTradeValid {selfTradeValid}");
+
+            if (targetTradeValid && selfTradeValid)
+            {
+                Debug.Log("Trade was valid");
+                tradeEndTime = Time.time + tradeTime;
+                // START RELEVANT ANIMATION HERE IF NEEDED
+                //if(extractionAnimationName != "")
+                //{
+                //
+                //}
+            }
+            else
+            {
+                Debug.Log("Trade was NOT valid");
+                EndAction(false);
+            }
+        }
+
+        public override void UpdateAction(NPCGOAPHandler NPC)
+        {
+            if(Time.time >= tradeEndTime)
+            {
+                Debug.Log($"Start Trade");
+                ItemStack receivedStack;
+                bool success = targetInventoryRef.Trade(requestedItem, offeredItem, requestFullQuantity, out receivedStack);
+                if(receivedStack != null &&
+                    (localInventory.IsTrade(requestedItem, offeredItem)
+                    || localInventory.IsTake(requestedItem, offeredItem)))
+                {
+                    localInventory.AddToInventory(receivedStack);
+                }
+                Debug.Log($"Was trade successful? {success}");
+
+                //if(localInventory.IsTrade(requestedItem, offeredItem))
+                //{
+                //    if(receivedStack.item == requestedItem.item
+                //        && (!requestFullQuantity
+                //        || requestFullQuantity && receivedStack.quantity == requestedItem.quantity))
+                //    {
+                //        succeeded = true;
+                //    }
+                //}
+                //else if(localInventory.IsTake(requestedItem, offeredItem))
+                //{
+                //    if (receivedStack.item == requestedItem.item
+                //        && (!requestFullQuantity
+                //        || requestFullQuantity && receivedStack.quantity == requestedItem.quantity))
+                //    {
+                //        succeeded = true;
+                //    }
+                //}
+                //else if(localInventory.IsGive(requestedItem, offeredItem))
+                //{
+                //    succeeded = true;
+                //}
+                EndAction(success);
+            }
+        }
+
+        internal override void EndAction(bool success)
+        {
+            // Trigger end of animate if required
+            targetInventoryRef = null;
+            localInventory = null;
+            base.EndAction(success);
+        }
+
+        #endregion
+
         public override G_Action Clone()
         {
             G_Trade clonedAction = ScriptableObject.CreateInstance<G_Trade>();
@@ -59,6 +154,7 @@ namespace GOAP
             clonedAction.Construct(this.name,
                 clonedPreconditons,
                 clonedEffects,
+                this.targetInventory,
                 clonedRequestedItem,
                 clonedOfferedItem,
                 this.requestFullQuantity,

@@ -16,7 +16,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fba5195377e594447a340956dc634ecf, type: 2}
   - {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
   - {fileID: 11400000, guid: 6b011fb19d059b64b890efa7f1ec724a, type: 2}
+  - {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
   actionPool:
   - {fileID: 11400000, guid: fa7be83f6b4734248b6c8e20c7c93f8a, type: 2}
   - {fileID: 11400000, guid: d4797161443862746aac61185331e2bb, type: 2}
+  - {fileID: 11400000, guid: f501e279b7fc0c4459796731bd1fd42c, type: 2}
   goals: []

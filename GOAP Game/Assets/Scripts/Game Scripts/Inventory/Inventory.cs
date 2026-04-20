@@ -61,6 +61,30 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public int SubtractFromInventory(ItemStack stack)
+    {
+        int subtraction = stack.quantity;
+        if (stack != null && stack.item != null)
+        {
+            ItemStack stacktoSubtrack = FindInInventory(stack.item);
+            if(stack.quantity > stacktoSubtrack.quantity)
+            {
+                subtraction = stacktoSubtrack.quantity;
+            }
+
+            stacktoSubtrack.quantity -= stack.quantity;
+            if(stacktoSubtrack.quantity <= 0)
+            {
+                inventory.Remove(stacktoSubtrack);
+            }
+        }
+        else
+        {
+            subtraction = 0;
+        }
+        return subtraction;
+    }
+
     void StackItem(ItemStack stack)
     {
         ItemStack existingStack = FindInInventory(stack.item);
@@ -97,18 +121,22 @@ public class Inventory : MonoBehaviour
     public bool IsTradeValid(ItemStack requestedItem, ItemStack offeredItem, bool requestFullQuantity)
     {
         bool isValid = false;
-
+        // Debug.Log("Validate Trade");
         if (IsTrade(requestedItem, offeredItem)) // Trade
         {
+            // Debug.Log("Trade");
             if (CanTakeFromInventory(requestedItem, requestFullQuantity))
             {
+                // Debug.Log("Trade is valid");
                 isValid = true;
             }
         }
         else if (IsTake(requestedItem, offeredItem)) // Take
         {
+            // Debug.Log("Take");
             if (CanTakeFromInventory(requestedItem, requestFullQuantity))
             {
+                // Debug.Log("Take is valid");
                 isValid = true;
             }
         }
@@ -160,12 +188,13 @@ public class Inventory : MonoBehaviour
 
     ItemStack TakeItem(ItemStack requestedItem, bool requestFullQuantity)
     {
+        ItemStack takenStack = null;
         ItemStack foundItem = FindInInventory(requestedItem.item);
         if (CanTakeFromInventory(requestedItem, foundItem, requestFullQuantity))
         {
-            inventory.Remove(foundItem);
+            takenStack = new ItemStack(requestedItem.item, SubtractFromInventory(requestedItem));
         }
-        return foundItem;
+        return takenStack;
     }
 
     void GiveItem(ItemStack offeredItem)
@@ -189,12 +218,12 @@ public class Inventory : MonoBehaviour
 
     public bool IsTake(ItemStack requestedItem, ItemStack offeredItem)
     {
-        return IsStackValid(requestedItem) && offeredItem == null;
+        return IsStackValid(requestedItem) && IsStackValid(offeredItem) == false;
     }
 
     public bool IsGive(ItemStack requestedItem, ItemStack offeredItem)
     {
-        return requestedItem == null && IsStackValid(offeredItem);
+        return IsStackValid(requestedItem) == false && IsStackValid(offeredItem);
     }
 
     public bool IsStackValid(ItemStack stack)
@@ -211,6 +240,7 @@ public class Inventory : MonoBehaviour
     public bool CanTakeFromInventory(ItemStack requestedItem, bool requestFullQuantity)
     {
         ItemStack foundItem = FindInInventory(requestedItem.item);
+        // Debug.Log($"foundItem is not null {foundItem != null}");
         return foundItem != null
                 && InventoryHasQuantity(foundItem, requestedItem, requestFullQuantity);
     }

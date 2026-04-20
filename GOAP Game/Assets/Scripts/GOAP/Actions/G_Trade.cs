@@ -64,11 +64,11 @@ namespace GOAP
                 selfTradeValid = localInventory.CanTakeFromInventory(offeredItem, true);
             }
 
-            Debug.Log($"targetTradeValid {targetTradeValid} and selfTradeValid {selfTradeValid}");
+            // Debug.Log($"targetTradeValid {targetTradeValid} and selfTradeValid {selfTradeValid}");
 
             if (targetTradeValid && selfTradeValid)
             {
-                Debug.Log("Trade was valid");
+                // Debug.Log("Trade was valid");
                 tradeEndTime = Time.time + tradeTime;
                 // START RELEVANT ANIMATION HERE IF NEEDED
                 //if(extractionAnimationName != "")
@@ -78,7 +78,7 @@ namespace GOAP
             }
             else
             {
-                Debug.Log("Trade was NOT valid");
+                // Debug.Log("Trade was NOT valid");
                 EndAction(false);
             }
         }
@@ -95,6 +95,10 @@ namespace GOAP
                     || localInventory.IsTake(requestedItem, offeredItem)))
                 {
                     localInventory.AddToInventory(receivedStack);
+                }
+                if(localInventory.IsGive(null, offeredItem))
+                {
+                    localInventory.SubtractFromInventory(offeredItem);
                 }
                 Debug.Log($"Was trade successful? {success}");
 

@@ -1141,7 +1141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162623994054567911, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.08
+      value: -18.87
       objectReference: {fileID: 0}
     - target: {fileID: 4162623994054567911, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1149,7 +1149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162623994054567911, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.73
+      value: -19.06
       objectReference: {fileID: 0}
     - target: {fileID: 4162623994054567911, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1181,15 +1181,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: inventory.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: inventory.Array.data[0].item
       value: 
       objectReference: {fileID: 11400000, guid: 06656c051ecb3014e9ea8ec5e7543ac6, type: 2}
     - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
+      propertyPath: inventory.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: f534f06b23c0f654b8c7fc31d8427eb2, type: 2}
+    - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: inventory.Array.data[0].quantity
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
+      propertyPath: inventory.Array.data[1].quantity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7761344101903681479, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: isTest
@@ -1198,7 +1206,7 @@ PrefabInstance:
     - target: {fileID: 7761344101903681479, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: testAction
       value: 
-      objectReference: {fileID: 11400000, guid: d4797161443862746aac61185331e2bb, type: 2}
+      objectReference: {fileID: 11400000, guid: f501e279b7fc0c4459796731bd1fd42c, type: 2}
     - target: {fileID: 7761344101903681479, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: worldStateReference
       value: 

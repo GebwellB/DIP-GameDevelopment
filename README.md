@@ -1,2 +1,2 @@
-# DIP-GameDevelopment
-For DIP Game Development Course
+# DIP Game Development
+A game that plays itself!

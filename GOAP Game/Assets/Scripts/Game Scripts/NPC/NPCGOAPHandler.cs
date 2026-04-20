@@ -8,15 +8,29 @@ namespace GOAP
 {
     public class NPCGOAPHandler : MonoBehaviour
     {
+        [Header("World State")]
         public G_WorldState worldStateReference;
-        [SerializeField] G_WorldState localWorldstate;
+        [SerializeField] G_WorldState localWorldState;
 
         [SerializeField] List<G_State> localStates = new List<G_State>();
         [SerializeField] List<G_Action> localActions = new List<G_Action>();
         [SerializeField] List<G_Goal> localGoals = new List<G_Goal>();
 
+        [Header("References")]
         MapInjector mapInjector = new MapInjector();
         Map map;
+        NPCPathing pathing;
+
+        [Header("Action Running")]
+        G_Action currentAction;
+        List<G_Action> currentPlan = new List<G_Action>();
+        bool readyForNextAction = true; // Flag once an action has ended so that we can go to the next one
+
+        [Header("Testing")]
+        public bool isTest = false;
+        public G_Action testAction;
+        public List<G_Action> testPlan;
+        public bool isPlanTest = false; // For running a test for a whole plan
 
         private void Awake()
         {
@@ -30,12 +44,19 @@ namespace GOAP
             if(pathing != null)
             {
                 pathing.Init(this);
+                this.pathing = pathing;
+            }
+            if (isTest)
+            {
+                StartTest();
             }
         }
 
+        #region World State Setup
+
         public G_WorldState GetLocalWorldState()
         {
-            return localWorldstate;
+            return localWorldState;
         }
 
         public void CreateLocalWorldState()
@@ -55,8 +76,8 @@ namespace GOAP
                     TryTransferGoal(localGoals, localStates, worldStateReference.goals[i]);
                 }
 
-                localWorldstate = ScriptableObject.CreateInstance<G_WorldState>();
-                localWorldstate.Construct(localStates, localActions, localGoals);
+                localWorldState = ScriptableObject.CreateInstance<G_WorldState>();
+                localWorldState.Construct(localStates, localActions, localGoals);
             }
         }
 
@@ -94,6 +115,102 @@ namespace GOAP
                 localGoalPool.Add(clonedGoal);
             }
         }
+
+        #endregion
+
+        #region Test Running
+
+        void StartTest()
+        {
+            if (isPlanTest)
+            {
+                currentPlan = testPlan;
+                StartAction(testPlan[0]);
+            }
+            else
+            {
+                StartAction(AddTestActionToPool(testAction));
+            }
+        }
+
+        G_Action AddTestActionToPool(G_Action testAction)
+        {
+            G_Action testActionDupe = localWorldState.FindAction(testAction);
+            if (testActionDupe == null)
+            {
+                TryTransferAction(localActions, localStates, testAction);
+            }
+            return localWorldState.FindAction(testAction);
+        }
+
+        #endregion
+
+        #region Action Running
+
+        private void Update()
+        {
+            if(currentAction != null)
+            {
+                UpdateCurrentAction();
+            }
+            else if(readyForNextAction && currentPlan.Count > 0)
+            {
+                StartAction(currentPlan[0]);
+            }
+        }
+
+        void StartAction(G_Action action)
+        {
+            currentAction = action;
+            currentAction.ActionEnded += HandleEndOfAction;
+            readyForNextAction = false;
+            bool started = currentAction.StartAction(this);
+            if (!started)
+            {
+                print($"Plan failed at action {currentAction.name}");
+            }
+        }
+
+        void UpdateCurrentAction()
+        {
+            currentAction?.UpdateAction(this);
+        }
+
+        void HandleEndOfAction(bool success)
+        {
+            currentAction.ActionEnded -= HandleEndOfAction;
+            if (currentPlan.Contains(currentAction))
+            {
+                currentPlan.Remove(currentAction);
+            }
+            if (success)
+            {
+                readyForNextAction = true;
+                print($"Action {currentAction.name} ended successfully");
+            }
+            else
+            {
+                print($"Action {currentAction.name} failed to succeed");
+                // Could attempt a replan, or just try a different goal
+            }
+            currentAction = null;
+        }
+
+        #endregion
+
+        #region Retrieval Functions
+
+        public Map GetLocalMap()
+        {
+            return map;
+        }
+
+        public NPCPathing GetPathing()
+        {
+            return pathing;
+        }
+
+        #endregion
     }
 }
 

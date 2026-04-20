@@ -1,4 +1,4 @@
-using GOAP;
+ using GOAP;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
@@ -19,6 +19,32 @@ public class NPCPathing : MonoBehaviour
     [SerializeField] G_AtLocation locationTrackingStateRef;
     G_AtLocation locationTrackingState;
 
+    #region Pathing
+
+    public void StartPath(Vector3 destination)
+    {
+        agent.SetDestination(destination);
+    }
+
+    public void StartPath(LocationInstance locationInstance)
+    {
+        agent.SetDestination(locationInstance.GetAccesPoint());
+    }
+
+    public bool IsAtLocation(LocationInstance location)
+    {
+        return currentLocation = location;
+    }
+
+    public bool IsAtLocationType(LocationType type)
+    {
+        return currentLocation != null ?
+            currentLocation.GetLocationType() == type
+            : type == null;
+    }
+
+    #endregion
+
     #region Setup
     public void Init(NPCGOAPHandler worldState)
     {
@@ -37,21 +63,6 @@ public class NPCPathing : MonoBehaviour
             locationTrackingState = tempState;
         }
     }
-    #endregion
-
-    #region Test Function
-    public bool IsInLocation(LocationInstance location)
-    {
-        return currentLocation = location;
-    }
-
-    public bool IsAtLocationType(LocationType type)
-    {
-        return currentLocation != null ?
-            currentLocation.GetLocationType() == type 
-            : type == null;
-    }
-
     #endregion
 
     #region Location Entry and Exit

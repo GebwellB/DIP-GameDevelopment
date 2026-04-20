@@ -5,6 +5,7 @@ using GOAP;
 
 public class Inventory : MonoBehaviour
 {
+    //public int capacity = 10;
     [SerializeField]
     List<ItemStack> inventory = new List<ItemStack>();
     MapInjector mapInjector = new MapInjector();
@@ -21,6 +22,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    #region World State
     void AssignWorldState()
     {
         if (refInventoryState.isLocal)
@@ -34,6 +36,10 @@ public class Inventory : MonoBehaviour
     {
         return inventoryState;
     }
+
+    #endregion
+
+    #region Inventory Functions
 
     /// <summary>
     /// For adding items to the Inventory. If it finds the item type in the inventory, it will add to the stack of that item
@@ -83,6 +89,99 @@ public class Inventory : MonoBehaviour
         }
         return foundStack;
     }
+
+    #endregion
+
+    #region Trade
+
+    public ItemStack Trade(ItemStack requestedItem, ItemStack offeredItem, bool requestFullQuantity)
+    {
+        ItemStack receivedItem = null;
+
+        if (IsTrade(requestedItem, offeredItem)) // Trade
+        {
+            receivedItem = TradeItem(requestedItem, offeredItem, requestFullQuantity);
+        }
+        else if(IsTake(requestedItem, offeredItem)) // Take
+        {
+            receivedItem = TakeItem(requestedItem, requestFullQuantity);
+        }
+        else if (IsGive(requestedItem, offeredItem)) // Give
+        {
+            GiveItem(offeredItem);
+        }
+
+        return receivedItem;
+    }
+
+    ItemStack TradeItem(ItemStack requestedItem, ItemStack offeredItem, bool requestFullQuantity)
+    {
+        ItemStack receivedItem = null;
+        receivedItem = TakeItem(requestedItem, requestFullQuantity);
+        GiveItem(offeredItem);
+        return receivedItem;
+    }
+
+    ItemStack TakeItem(ItemStack requestedItem, bool requestFullQuantity)
+    {
+        ItemStack foundItem = FindInInventory(requestedItem.item);
+        if (CanTakeFromInventory(requestedItem, foundItem, requestFullQuantity))
+        {
+            inventory.Remove(foundItem);
+        }
+        return foundItem;
+    }
+
+    void GiveItem(ItemStack offeredItem)
+    {
+        // Commented code left for reference for possible expansion of inventory system (capacity limits)
+        //if (inventory.Count < capacity
+        //        || inventory.Count == capacity && inventory.Exists((stack) => stack.item == offeredItem.item))
+        //{
+            AddToInventory(offeredItem);
+        //}
+    }
+
+    #endregion
+
+    #region Conditions
+
+    bool IsTrade(ItemStack requestedItem, ItemStack offeredItem)
+    {
+        return RequestedItemIsValid(requestedItem) && OfferedItemIsValid(offeredItem);
+    }
+
+    bool IsTake(ItemStack requestedItem, ItemStack offeredItem)
+    {
+        return RequestedItemIsValid(requestedItem) && offeredItem == null;
+    }
+
+    bool IsGive(ItemStack requestedItem, ItemStack offeredItem)
+    {
+        return requestedItem == null && OfferedItemIsValid(offeredItem);
+    }
+
+    bool RequestedItemIsValid(ItemStack requestedItem)
+    {
+        return requestedItem != null && requestedItem.item != null;
+    }
+
+    bool OfferedItemIsValid(ItemStack offeredItem)
+    {
+        return offeredItem != null && offeredItem.item != null;
+    }
+
+    bool CanTakeFromInventory(ItemStack requestedItem, ItemStack foundItem, bool requestFullQuantity)
+    {
+        return foundItem != null
+                && InventoryHasQuantity(foundItem, requestedItem, requestFullQuantity);
+    }
+    bool InventoryHasQuantity(ItemStack foundItem, ItemStack requestedItem, bool requestFullQuantity)
+    {
+        return requestFullQuantity && foundItem.quantity >= requestedItem.quantity
+            || !requestFullQuantity && foundItem.quantity > 0;
+    }
+    #endregion
 }
 
 ///// <summary>

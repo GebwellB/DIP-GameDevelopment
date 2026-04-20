@@ -22,6 +22,11 @@ namespace GOAP
         {
             return states.Find((state) => state.name == referenceState.name);
         }
+
+        public G_Action FindAction(G_Action referenceAction)
+        {
+            return actionPool.Find((action) => action.name == referenceAction.name);
+        }
     }
 }
 

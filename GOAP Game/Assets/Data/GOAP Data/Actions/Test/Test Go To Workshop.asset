@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1edf94d6f751ef489c67f7dfc49aeb9, type: 3}
-  m_Name: Test Go To Tree
+  m_Name: Test Go To Workshop
   m_EditorClassIdentifier: Main::GOAP.G_GoTo
   cost: 10
   priority: 1
@@ -20,11 +20,11 @@ MonoBehaviour:
     comparison: 0
     expectedValue:
       rid: -2
-    expectedReference: {fileID: 11400000, guid: 352c630b7c68d7f4ba20a05d8ee894d4, type: 2}
+    expectedReference: {fileID: 11400000, guid: 86b5d3892a45caa498426ccca683733e, type: 2}
     useExpectedReference: 1
     serializedExpectedValue: 
     editorActive: 1
-  targetLocationType: {fileID: 11400000, guid: 352c630b7c68d7f4ba20a05d8ee894d4, type: 2}
+  targetLocationType: {fileID: 11400000, guid: 86b5d3892a45caa498426ccca683733e, type: 2}
   canEndAtDifferentTarget: 0
   references:
     version: 2

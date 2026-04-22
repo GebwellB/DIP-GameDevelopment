@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa32fe2f25149d148b535da28a3f4b2c, type: 3}
-  m_Name: Test Chop Tree
+  m_Name: Test Deliver Wood New
   m_EditorClassIdentifier: Main::GOAP.G_Trade
   cost: 10
   priority: 0
@@ -19,75 +19,62 @@ MonoBehaviour:
     comparison: 0
     expectedValue:
       rid: -2
-    expectedReference: {fileID: 11400000, guid: 352c630b7c68d7f4ba20a05d8ee894d4, type: 2}
+    expectedReference: {fileID: 11400000, guid: 08b7f8409104dc644bb36f783702fdeb, type: 2}
     useExpectedReference: 1
     serializedExpectedValue: 
     editorActive: 1
   - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
     comparison: 4
     expectedValue:
-      rid: 824929955095248958
-    expectedReference: {fileID: 0}
-    useExpectedReference: 0
-    serializedExpectedValue: 
-    editorActive: 1
-  - state: {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
-    comparison: 4
-    expectedValue:
-      rid: 824929955095248959
+      rid: 824929999898542250
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   effects:
   - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
-    comparison: 4
-    expectedValue:
-      rid: 824929955095248960
-    expectedReference: {fileID: 0}
-    useExpectedReference: 0
-    serializedExpectedValue: 
-    editorActive: 1
-  - state: {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
     comparison: 0
     expectedValue:
-      rid: 824929955095248962
+      rid: 824929999898542251
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
-  targetInventory: {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
+  - state: {fileID: 11400000, guid: 8687b0bfc64172542a9ea135a7ddb854, type: 2}
+    comparison: 4
+    expectedValue:
+      rid: 824929999898542252
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: 
+    editorActive: 1
+  targetInventory: {fileID: 11400000, guid: 8687b0bfc64172542a9ea135a7ddb854, type: 2}
   requestedItem:
-    item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
-    quantity: 10
-  offeredItem:
     item: {fileID: 0}
     quantity: 0
-  requestFullQuantity: 0
-  tradeTime: 1
-  isExtraction: 1
+  offeredItem:
+    item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+    quantity: 10
+  requestFullQuantity: 1
+  tradeTime: 0.3
+  isExtraction: 0
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 824929955095248958
-      type: {class: ItemStack, ns: , asm: Main}
-      data:
-        item: {fileID: 11400000, guid: f534f06b23c0f654b8c7fc31d8427eb2, type: 2}
-        quantity: 1
-    - rid: 824929955095248959
+    - rid: 824929999898542250
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
         quantity: 10
-    - rid: 824929955095248960
-      type: {class: ItemStack, ns: , asm: Main}
-      data:
-        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
-        quantity: 10
-    - rid: 824929955095248962
+    - rid: 824929999898542251
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
         quantity: 0
+    - rid: 824929999898542252
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+        quantity: 10

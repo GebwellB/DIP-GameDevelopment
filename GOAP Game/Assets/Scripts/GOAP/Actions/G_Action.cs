@@ -8,8 +8,9 @@ namespace GOAP
     {
 
         #region Data
+        [SerializeField]
         internal int cost = 10;
-
+        [SerializeField]
         internal int priority = 0;
 
         public List<G_Condition> preconditions = new List<G_Condition>();
@@ -137,6 +138,14 @@ namespace GOAP
             {
                 if (!preconditions[i].DoesStateMeetCondition())
                 {
+                    if (preconditions[i].UseExpectedReference)
+                    {
+                        Debug.Log($"Condition not met: {preconditions[i].State.name} {preconditions[i].Comparison} {preconditions[i].ExpectedReference} {preconditions[i].ExpectedValue}");
+                    }
+                    else
+                    {
+                        Debug.Log($"Condition not met: {preconditions[i].State.name} {preconditions[i].Comparison} {preconditions[i].ExpectedValue}");
+                    }
                     ready = false;
                 }
             }

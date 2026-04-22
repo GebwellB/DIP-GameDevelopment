@@ -23,9 +23,14 @@ namespace GOAP
         Inventory inventory;
 
         [Header("Action Running")]
+        [SerializeField]
         G_Action currentAction;
+        [SerializeField]
         List<G_Action> currentPlan = new List<G_Action>();
         bool readyForNextAction = true; // Flag once an action has ended so that we can go to the next one
+
+        [Header("Goal Selection")]
+        [SerializeField] G_Goal currentGoal;
 
         [Header("Testing")]
         public bool isTest = false;
@@ -158,7 +163,10 @@ namespace GOAP
         {
             if (isPlanTest)
             {
-                currentPlan = testPlan;
+                for(int i = 0; i < testPlan.Count; i++)
+                {
+                    currentPlan.Add(AddTestActionToPool(testPlan[i]));
+                }
                 StartAction(testPlan[0]);
             }
             else
@@ -183,6 +191,10 @@ namespace GOAP
 
         private void Update()
         {
+            if(currentGoal == null || currentGoal != null && currentPlan.Count == 0)
+            {
+                SelectGoal();
+            }
             if(currentAction != null)
             {
                 UpdateCurrentAction();
@@ -190,6 +202,19 @@ namespace GOAP
             else if(readyForNextAction && currentPlan.Count > 0)
             {
                 StartAction(currentPlan[0]);
+            }
+        }
+
+        void SelectGoal()
+        {
+            List<G_Action> tempPlan = new List<G_Action>();
+            for (int i = 0; i < localWorldState.goals.Count; i++)
+            {
+                if (G_Planner.GeneratePlan(localWorldState.goals[i], localWorldState, out tempPlan))
+                {
+                    currentGoal = localWorldState.goals[i];
+                    currentPlan = tempPlan;
+                }
             }
         }
 
@@ -202,6 +227,7 @@ namespace GOAP
             if (!started)
             {
                 print($"Plan failed at action {currentAction.name}");
+                currentAction = null;
             }
         }
 
@@ -217,6 +243,7 @@ namespace GOAP
             {
                 currentPlan.Remove(currentAction);
             }
+
             if (success)
             {
                 readyForNextAction = true;
@@ -227,6 +254,15 @@ namespace GOAP
                 print($"Action {currentAction.name} failed to succeed");
                 // Could attempt a replan, or just try a different goal
             }
+
+            if (currentPlan.Count == 0 && currentGoal != null)
+            {
+                print("Plan finished");
+                bool goalAchieved = currentGoal.DidGoalSucceed();
+                print($"Did goal succeed? {goalAchieved}");
+                currentGoal = null;
+            }
+            
             currentAction = null;
         }
 

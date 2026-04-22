@@ -64,11 +64,11 @@ namespace GOAP
                 selfTradeValid = localInventory.CanTakeFromInventory(offeredItem, true);
             }
 
-            // Debug.Log($"targetTradeValid {targetTradeValid} and selfTradeValid {selfTradeValid}");
+            Debug.Log($"targetTradeValid {targetTradeValid} and selfTradeValid {selfTradeValid}");
 
             if (targetTradeValid && selfTradeValid)
             {
-                // Debug.Log("Trade was valid");
+                Debug.Log("Trade was valid");
                 tradeEndTime = Time.time + tradeTime;
                 // START RELEVANT ANIMATION HERE IF NEEDED
                 //if(extractionAnimationName != "")
@@ -78,7 +78,7 @@ namespace GOAP
             }
             else
             {
-                // Debug.Log("Trade was NOT valid");
+                Debug.Log("Trade was NOT valid");
                 EndAction(false);
             }
         }
@@ -87,8 +87,12 @@ namespace GOAP
         {
             if(Time.time >= tradeEndTime)
             {
-                Debug.Log($"Start Trade");
+                //Debug.Log($"Start Trade");
                 ItemStack receivedStack;
+                Debug.Log($"Null checking");
+                Debug.Log($"targetInventoryRef {targetInventoryRef != null}");
+                Debug.Log($"requestedItem {requestedItem != null}");
+                Debug.Log($"offeredItem {offeredItem != null}");
                 bool success = targetInventoryRef.Trade(requestedItem, offeredItem, requestFullQuantity, out receivedStack);
                 if(receivedStack != null &&
                     (localInventory.IsTrade(requestedItem, offeredItem)
@@ -100,7 +104,7 @@ namespace GOAP
                 {
                     localInventory.SubtractFromInventory(offeredItem);
                 }
-                Debug.Log($"Was trade successful? {success}");
+                //Debug.Log($"Was trade successful? {success}");
 
                 //if(localInventory.IsTrade(requestedItem, offeredItem))
                 //{

@@ -31,6 +31,11 @@ namespace GOAP
             this.canEndAtDifferentTarget = canEndAtDifferentTarget;
         }
 
+        public override int GetPriority()
+        {
+            return 1;
+        }
+
         #endregion
 
         #region Action Running

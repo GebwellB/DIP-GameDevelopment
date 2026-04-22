@@ -18,7 +18,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036412
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: bFalse
     editorActive: 1
   - state: {fileID: 11400000, guid: fa7cfc9b626376c4b92f62da2d02579a, type: 2}
@@ -26,7 +26,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036413
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: f4
     editorActive: 1
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
@@ -34,7 +34,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036402
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
@@ -42,7 +42,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036411
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   effects:
@@ -51,7 +51,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036327
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
@@ -59,7 +59,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036340
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
@@ -67,7 +67,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036353
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   references:

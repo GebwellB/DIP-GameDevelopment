@@ -237,7 +237,7 @@ namespace GOAP
         List<G_Action> AddToPlan(List<G_Action> plan)
         {
             plan.Add(nodeAction);
-            if(!parentNode.IsGoalNode && parentNode != null && nodeAction != null)
+            if(parentNode != null && !parentNode.IsGoalNode && nodeAction != null)
             {
                 plan = parentNode.AddToPlan(plan);
             }

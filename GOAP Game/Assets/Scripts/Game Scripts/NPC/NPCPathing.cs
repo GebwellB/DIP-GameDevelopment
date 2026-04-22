@@ -15,6 +15,7 @@ public class NPCPathing : MonoBehaviour
 
     NPCGOAPHandler worldState;
 
+    [SerializeField]
     LocationInstance currentLocation; // Use this for tracking current location
     [SerializeField] G_AtLocation locationTrackingStateRef;
     G_AtLocation locationTrackingState;
@@ -33,7 +34,7 @@ public class NPCPathing : MonoBehaviour
 
     public bool IsAtLocation(LocationInstance location)
     {
-        return currentLocation = location;
+        return currentLocation == location;
     }
 
     public bool IsAtLocationType(LocationType type)

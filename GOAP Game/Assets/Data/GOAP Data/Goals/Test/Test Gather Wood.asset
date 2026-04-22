@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b950beab6b78b4f807207e6483d9d4, type: 3}
+  m_Name: Test Gather Wood
+  m_EditorClassIdentifier: Main::GOAP.G_Goal
+  priority: 1
+  triggerConditions:
+  - state: {fileID: 11400000, guid: 8687b0bfc64172542a9ea135a7ddb854, type: 2}
+    comparison: 3
+    expectedValue:
+      rid: 824929999533375488
+    expectedReference: {fileID: 0}
+    useExpectedReference: 1
+    serializedExpectedValue: 
+    editorActive: 1
+  goalEffects:
+  - state: {fileID: 11400000, guid: 8687b0bfc64172542a9ea135a7ddb854, type: 2}
+    comparison: 4
+    expectedValue:
+      rid: 824929999533375489
+    expectedReference: {fileID: 0}
+    useExpectedReference: 1
+    serializedExpectedValue: 
+    editorActive: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 824929999533375488
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+        quantity: 9999
+    - rid: 824929999533375489
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+        quantity: 0

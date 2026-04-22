@@ -21,6 +21,7 @@ namespace GOAP
         public override void SetValue(object value)
         {
             this.value = (LocationType)value;
+            SendUpdate(this.value);
         }
 
         public override object GetValue()
@@ -149,7 +150,12 @@ namespace GOAP
                 property.FindPropertyRelative("serializedExpectedValue").stringValue = "";
             }
 
-            if(comparison.enumValueIndex != (int)G_StateComparison.equal)
+            if (property.FindPropertyRelative("useExpectedReference").boolValue != true)
+            {
+                property.FindPropertyRelative("useExpectedReference").boolValue = true;
+            }
+
+            if (comparison.enumValueIndex != (int)G_StateComparison.equal)
             {
                 comparison.enumValueIndex = (int)G_StateComparison.equal;
             }

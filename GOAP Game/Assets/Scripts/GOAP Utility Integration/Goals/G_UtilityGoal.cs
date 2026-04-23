@@ -7,6 +7,7 @@ using UtilityAI;
 public class G_UtilityGoal : G_Goal
 {
     [Header("Utility")]
+    public bool canInterrupt = false;
     [SerializeField] U_Scorer utilityScorer = new U_Scorer();
 
     public U_Scorer UtilityScorer
@@ -25,9 +26,11 @@ public class G_UtilityGoal : G_Goal
         List<G_Condition> triggerConditions,
         List<G_Condition> goalEffects,
         float priority,
+        bool canInterrupt,
         U_Scorer utilityScorer)
     {
         Construct(name, triggerConditions, goalEffects, priority);
+        this.canInterrupt = canInterrupt;
         this.utilityScorer = utilityScorer;
     }
 
@@ -55,6 +58,7 @@ public class G_UtilityGoal : G_Goal
             clonedTriggers,
             clonedEffects,
             this.priority,
+            this.canInterrupt,
             this.utilityScorer.Clone());
         return clonedGoal;
     }

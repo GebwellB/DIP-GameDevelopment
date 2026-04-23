@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace GOAP
@@ -16,6 +17,11 @@ namespace GOAP
             this.states = states;
             this.actionPool = actionPool;
             this.goals = goals;
+        }
+
+        public void OrderGoalsByPriority()
+        {
+            goals = goals.OrderBy((goal) => goal.priority).ToList();
         }
 
         public G_State FindState(G_State referenceState)

@@ -25,6 +25,8 @@ namespace UtilityAI
         [SerializeField] G_IntState intStateMax;
         [SerializeField] U_Value utilityMax;
 
+        float currentUtility = 0f;
+
         #endregion
 
         #region Properties
@@ -52,6 +54,9 @@ namespace UtilityAI
 
         public U_Value UtilityMax
         { get { return utilityMax; } }
+
+        public float CurrentUtility
+        { get { return currentUtility; } }
         #endregion
 
         #region Construction Functions
@@ -133,7 +138,7 @@ namespace UtilityAI
                 percentage = variable / maximum;
             }
             float result = responseCurve.Evaluate(percentage);
-
+            currentUtility = result;
             return result;
         }
 

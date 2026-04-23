@@ -1,4 +1,3 @@
-using log4net;
 using NUnit.Framework;
 using System;
 using System.Collections;
@@ -64,7 +63,7 @@ namespace GOAP
                 selfTradeValid = localInventory.CanTakeFromInventory(offeredItem, true);
             }
 
-            Debug.Log($"targetTradeValid {targetTradeValid} and selfTradeValid {selfTradeValid}");
+            //Debug.Log($"targetTradeValid {targetTradeValid} and selfTradeValid {selfTradeValid}");
 
             if (targetTradeValid && selfTradeValid)
             {
@@ -89,10 +88,10 @@ namespace GOAP
             {
                 //Debug.Log($"Start Trade");
                 ItemStack receivedStack;
-                Debug.Log($"Null checking");
-                Debug.Log($"targetInventoryRef {targetInventoryRef != null}");
-                Debug.Log($"requestedItem {requestedItem != null}");
-                Debug.Log($"offeredItem {offeredItem != null}");
+                //Debug.Log($"Null checking");
+                //Debug.Log($"targetInventoryRef {targetInventoryRef != null}");
+                //Debug.Log($"requestedItem {requestedItem != null}");
+                //Debug.Log($"offeredItem {offeredItem != null}");
                 bool success = targetInventoryRef.Trade(requestedItem, offeredItem, requestFullQuantity, out receivedStack);
                 if(receivedStack != null &&
                     (localInventory.IsTrade(requestedItem, offeredItem)

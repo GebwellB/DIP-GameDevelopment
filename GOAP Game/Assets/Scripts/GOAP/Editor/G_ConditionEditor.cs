@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using GOAP;
@@ -88,3 +89,4 @@ public class G_ConditionEditor : PropertyDrawer // Only one instance of a custom
         progressiveHeight += EditorGUIUtility.standardVerticalSpacing;
     }
 }
+#endif

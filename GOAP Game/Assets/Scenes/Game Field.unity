@@ -305,13 +305,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06054503, y: -0.86166066, z: 0.105904885, w: 0.49260467}
-  m_LocalPosition: {x: 28.11, y: 15.57, z: 25.23}
+  m_LocalRotation: {x: 0.36975947, y: -0, z: -0, w: 0.9291276}
+  m_LocalPosition: {x: -9.6, y: 33.3, z: -44.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 14.014, y: -120.488, z: 0}
+  m_LocalEulerAnglesHint: {x: 43.402, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,7 +689,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1101816563250785778, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
       propertyPath: inventory.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101816563250785778, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
+      propertyPath: inventory.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+    - target: {fileID: 1101816563250785778, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
+      propertyPath: inventory.Array.data[0].quantity
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5259127116613342108, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
       propertyPath: m_Name
@@ -828,6 +836,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 7909724947789644785, guid: 73249bf6493c9e240acd6b4d628e0908, type: 3}
+      propertyPath: inventory.Array.data[0].quantity
+      value: 99999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -905,7 +917,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2957480187661307337, guid: a811e7f2316eb1b43b4fbc4d24a11a67, type: 3}
       propertyPath: inventory.Array.data[0].quantity
-      value: 1
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6317570924612735556, guid: a811e7f2316eb1b43b4fbc4d24a11a67, type: 3}
       propertyPath: m_LocalPosition.x

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GOAP
 {
-    [CreateAssetMenu(fileName = "World State", menuName = "GOAP/World State")]
+    [CreateAssetMenu(fileName = "New World State", menuName = "GOAP/World State/Base World State")]
     public class G_WorldState : ScriptableObject
     {
         public List<G_State> states = new List<G_State>();
@@ -20,12 +20,17 @@ namespace GOAP
 
         public G_State FindState(G_State referenceState)
         {
-            return states.Find((state) => state.name == referenceState.name);
+            return states.Find((state) => state != null && state.name == referenceState.name);
         }
 
         public G_Action FindAction(G_Action referenceAction)
         {
-            return actionPool.Find((action) => action.name == referenceAction.name);
+            return actionPool.Find((action) => action != null && action.name == referenceAction.name);
+        }
+
+        public G_Goal FindGoal(G_Goal referenceGoal)
+        {
+            return goals.Find((goals) => goals != null && goals.name == referenceGoal.name);
         }
     }
 }

@@ -116,7 +116,12 @@ namespace GOAP
             // ActionPool
             this.nodeActionPool = new List<G_Action>(nodeActionPool);
             // Preconditions
-            this.preconditions = new List<G_Condition>(preconditions);
+            this.preconditions = new List<G_Condition>();
+            for(int i=0; i <preconditions.Count; i++)
+            {
+                this.preconditions.Add(G_Condition.Clone(preconditions[i]));
+            }
+
             // World state reference
             this.worldStateRef = worldStateRef;
 

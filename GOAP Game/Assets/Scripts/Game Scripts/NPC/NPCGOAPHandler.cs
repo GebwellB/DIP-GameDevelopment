@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
-using PlasticGui.WorkspaceWindow.QueryViews;
 
 namespace GOAP
 {
@@ -199,7 +198,7 @@ namespace GOAP
             {
                 UpdateCurrentAction();
             }
-            else if(readyForNextAction && currentPlan.Count > 0)
+            else if(readyForNextAction && currentPlan.Count > 0 && currentPlan[0] != null)
             {
                 StartAction(currentPlan[0]);
             }
@@ -207,6 +206,7 @@ namespace GOAP
 
         void SelectGoal()
         {
+            //Debug.Log("Plan goal");
             List<G_Action> tempPlan = new List<G_Action>();
             for (int i = 0; i < localWorldState.goals.Count; i++)
             {
@@ -227,7 +227,23 @@ namespace GOAP
             if (!started)
             {
                 print($"Plan failed at action {currentAction.name}");
-                currentAction = null;
+                AttemptReplan();
+            }
+        }
+
+        void AttemptReplan()
+        {
+            ClearCurrentAction();
+            readyForNextAction = true;
+            List<G_Action> tempPlan = new List<G_Action>();
+            if (G_Planner.GeneratePlan(currentGoal, localWorldState, out tempPlan))
+            {
+                Debug.Log($"Replanned");
+                currentPlan = tempPlan;
+            }
+            else
+            {
+                currentGoal = null;
             }
         }
 
@@ -238,7 +254,6 @@ namespace GOAP
 
         void HandleEndOfAction(bool success)
         {
-            currentAction.ActionEnded -= HandleEndOfAction;
             if (currentPlan.Contains(currentAction))
             {
                 currentPlan.Remove(currentAction);
@@ -262,7 +277,12 @@ namespace GOAP
                 print($"Did goal succeed? {goalAchieved}");
                 currentGoal = null;
             }
-            
+            ClearCurrentAction();
+        }
+
+        void ClearCurrentAction()
+        {
+            currentAction.ActionEnded -= HandleEndOfAction;
             currentAction = null;
         }
 

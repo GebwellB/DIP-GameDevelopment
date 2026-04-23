@@ -43,4 +43,4 @@ MonoBehaviour:
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
-        quantity: 0
+        quantity: 9999

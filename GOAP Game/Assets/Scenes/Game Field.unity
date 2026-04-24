@@ -694,9 +694,17 @@ PrefabInstance:
     - target: {fileID: 1101816563250785778, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
       propertyPath: inventory.Array.data[0].item
       value: 
-      objectReference: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
+    - target: {fileID: 1101816563250785778, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
+      propertyPath: inventory.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 859979106f89c794890e20063a0ec251, type: 2}
     - target: {fileID: 1101816563250785778, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
       propertyPath: inventory.Array.data[0].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101816563250785778, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
+      propertyPath: inventory.Array.data[1].quantity
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5259127116613342108, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
@@ -1242,7 +1250,7 @@ PrefabInstance:
     - target: {fileID: 7761344101903681479, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: worldStateReference
       value: 
-      objectReference: {fileID: 11400000, guid: 684710fb8ab168f4f827b406ae9bc009, type: 2}
+      objectReference: {fileID: 11400000, guid: c61dc13cf495a5d4f81163aaad545c21, type: 2}
     - target: {fileID: 7761344101903681479, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: currentPlan.Array.size
       value: 1
@@ -1278,8 +1286,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8996114886467133041, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1844469403182672210}
   m_SourcePrefab: {fileID: 100100000, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
+--- !u!1 &1844469403182672202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8996114886467133041, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
+  m_PrefabInstance: {fileID: 1844469403182672201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1844469403182672210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844469403182672202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4d09cf2cfadeb4182a9177c21b5f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::NPCStatManager
+  refCurrentEnergy: {fileID: 11400000, guid: cc519f177287a0b4eb02e77ddf4906a0, type: 2}
+  maxCurrentEnergy: {fileID: 11400000, guid: e2573a1910a6b3b4587d3a2d3cef0979, type: 2}
+  energyIncrementRate: 1
+  refCurrentFullness: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
+  maxCurrentFullness: {fileID: 11400000, guid: f139c444607a2bd4d962f2a3ed8b3880, type: 2}
+  hungerIncrementRate: -1
+  hunger: {fileID: 11400000, guid: 2f5beb263e379d74295f64bd513f8135, type: 2}
+  regainThreshold: 0.15
+  regainMultiplier: 1
+  LoseThreshold: 0.2
+  lossMultiplier: -2
 --- !u!1001 &3300384902453980159
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 667106ef9428bf94c83050307bb1db33, type: 3}
-  m_Name: Maximum Hunger
+  m_Name: Current Fullness
   m_EditorClassIdentifier: Main::GOAP.G_FloatState
-  isLocal: 0
+  isLocal: 1
+  value: 100

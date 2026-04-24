@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 667106ef9428bf94c83050307bb1db33, type: 3}
-  m_Name: Current Hunger
-  m_EditorClassIdentifier: Main::GOAP.G_FloatState
-  isLocal: 0
+  m_Script: {fileID: 11500000, guid: e43e03db1091cd749b033b6d557f331e, type: 3}
+  m_Name: Burger
+  m_EditorClassIdentifier: Main::Item
+  stackable: 1

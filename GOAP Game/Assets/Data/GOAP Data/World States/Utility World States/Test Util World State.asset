@@ -32,8 +32,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d2c8a18f2c4661846b782cd0d2d2a263, type: 2}
   - {fileID: 11400000, guid: 0e286606aad9d4d43917f15e2466c9cb, type: 2}
   - {fileID: 11400000, guid: 85fc13c0fa801464b9f3965a83c6e58b, type: 2}
+  - {fileID: 11400000, guid: f9df925457f8e2d49808f9fecac998f5, type: 2}
+  - {fileID: 11400000, guid: c76d6a1b13a5fa54f97368f14553fb92, type: 2}
   goals:
-  - {fileID: 11400000, guid: a60c89f902b51ed47a1edfbce1b99485, type: 2}
+  - {fileID: 11400000, guid: 9008777af2ebe4a42ae7c1c5ad304c30, type: 2}
+  - {fileID: 11400000, guid: f25807b2442fdb4428339b02e34b0543, type: 2}
   utilityValues:
-  - {fileID: 11400000, guid: a209961cd030431429033bada93b6d0b, type: 2}
+  - {fileID: 11400000, guid: 2f5beb263e379d74295f64bd513f8135, type: 2}
   - {fileID: 11400000, guid: 67b0a1894f426354e8c0a674d9aeb4ea, type: 2}

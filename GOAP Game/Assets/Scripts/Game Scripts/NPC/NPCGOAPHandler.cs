@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using GOAP;
 using UtilityAI;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 namespace GOAP
 {
@@ -72,6 +73,12 @@ namespace GOAP
                 }
             }
 
+            NPCStatManager stats = GetComponent<NPCStatManager>();
+            if (stats != null && localWorldState is G_UtilityWorldState utilityWorldState)
+            {
+                stats.InjectLocalWorldState(utilityWorldState);
+            }
+
             if (isTest)
             {
                 StartTest();
@@ -134,7 +141,7 @@ namespace GOAP
                     TryTransferU_Values(utilityWorldState);
                     ProcessGoals();
                     localWorldState = ScriptableObject.CreateInstance<G_UtilityWorldState>();
-                    ((G_UtilityWorldState)localWorldState).Construct(localStates, localActions, localGoals);
+                    ((G_UtilityWorldState)localWorldState).Construct(localStates, localActions, localGoals, localU_Values);
                 }
                 else
                 {
@@ -274,9 +281,10 @@ namespace GOAP
             {
                 if (G_Planner.GeneratePlan(localWorldState.goals[i], localWorldState, out tempPlan))
                 {
-                    Debug.Log("Planned goal successfully");
+                    Debug.Log($"Planned goal {localWorldState.goals[i]} successfully");
                     currentGoal = localWorldState.goals[i];
                     currentPlan = tempPlan;
+                    break;
                 }
             }
         }

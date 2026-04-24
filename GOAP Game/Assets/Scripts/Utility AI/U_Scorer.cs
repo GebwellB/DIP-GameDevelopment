@@ -72,7 +72,9 @@ namespace UtilityAI
             U_Value localValue = localValues.Find((value) => value != null && value.name == valueToReasign.name);
             if(localValue != null)
             {
-                valueToReasign = localValue;
+                values.Remove(valueToReasign);
+                values.Add(localValue);
+                //valueToReasign = localValue;
             }
         }
 

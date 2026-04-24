@@ -25,7 +25,7 @@ namespace UtilityAI
         [SerializeField] G_IntState intStateMax;
         [SerializeField] U_Value utilityMax;
 
-        float currentUtility = 0f;
+        [SerializeField] float currentUtility = 0f;
 
         #endregion
 
@@ -129,7 +129,7 @@ namespace UtilityAI
             float maximum = ReturnSourceValue(maxSource, false);
             float percentage = 0;
 
-            if(variable == 0f && maximum == 0f)
+            if (variable == 0f && maximum == 0f)
             {
                 percentage = 0f;
             }

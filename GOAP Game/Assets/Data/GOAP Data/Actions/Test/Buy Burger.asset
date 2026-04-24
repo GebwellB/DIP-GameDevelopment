@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa32fe2f25149d148b535da28a3f4b2c, type: 3}
-  m_Name: Test Buy Wood
+  m_Name: Buy Burger
   m_EditorClassIdentifier: Main::GOAP.G_Trade
   cost: 10
   priority: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 6b011fb19d059b64b890efa7f1ec724a, type: 2}
     comparison: 4
     expectedValue:
-      rid: 824929955095248958
+      rid: 824930045581852791
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: 
@@ -34,7 +34,7 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
     comparison: 4
     expectedValue:
-      rid: 824929955095248959
+      rid: 824930045581852794
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: 
@@ -43,7 +43,7 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
     comparison: 4
     expectedValue:
-      rid: 824929955095248960
+      rid: 824930045581852792
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: 
@@ -51,26 +51,26 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 6b011fb19d059b64b890efa7f1ec724a, type: 2}
     comparison: 0
     expectedValue:
-      rid: 824929955095248962
+      rid: 824930045581852793
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
-  - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
-    comparison: 0
+  - state: {fileID: 11400000, guid: 6b011fb19d059b64b890efa7f1ec724a, type: 2}
+    comparison: 4
     expectedValue:
-      rid: 824930010958659860
+      rid: 824930045581852795
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   targetInventory: {fileID: 11400000, guid: 6b011fb19d059b64b890efa7f1ec724a, type: 2}
   requestedItem:
-    item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
-    quantity: 10
+    item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
+    quantity: 1
   offeredItem:
     item: {fileID: 11400000, guid: 06656c051ecb3014e9ea8ec5e7543ac6, type: 2}
-    quantity: 10
+    quantity: 1
   requestFullQuantity: 1
   tradeTime: 0.3
   isExtraction: 0
@@ -79,28 +79,28 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 824929955095248958
+    - rid: 824930045581852791
       type: {class: ItemStack, ns: , asm: Main}
       data:
-        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
-        quantity: 10
-    - rid: 824929955095248959
+        item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
+        quantity: 1
+    - rid: 824930045581852792
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
+        quantity: 1
+    - rid: 824930045581852793
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
+        quantity: 0
+    - rid: 824930045581852794
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 06656c051ecb3014e9ea8ec5e7543ac6, type: 2}
-        quantity: 10
-    - rid: 824929955095248960
-      type: {class: ItemStack, ns: , asm: Main}
-      data:
-        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
-        quantity: 10
-    - rid: 824929955095248962
-      type: {class: ItemStack, ns: , asm: Main}
-      data:
-        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
-        quantity: 0
-    - rid: 824930010958659860
+        quantity: 1
+    - rid: 824930045581852795
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 06656c051ecb3014e9ea8ec5e7543ac6, type: 2}
-        quantity: 0
+        quantity: 1

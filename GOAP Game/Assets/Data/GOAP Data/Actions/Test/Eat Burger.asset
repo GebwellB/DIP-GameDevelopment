@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672b3350aff91fb43a7ebf518642060a, type: 3}
+  m_Name: Eat Burger
+  m_EditorClassIdentifier: Main::G_Eat
+  cost: 10
+  priority: 0
+  preconditions:
+  - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
+    comparison: 4
+    expectedValue:
+      rid: 824930045581852772
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: 
+    editorActive: 1
+  effects:
+  - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
+    comparison: 0
+    expectedValue:
+      rid: 824930045581852773
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: 
+    editorActive: 1
+  - state: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
+    comparison: 0
+    expectedValue:
+      rid: 824930045581853031
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: f100
+    editorActive: 1
+  consumptionTime: 5
+  foodItem:
+    item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
+    quantity: 1
+  currentHunger: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 824930045581852772
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
+        quantity: 1
+    - rid: 824930045581852773
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
+        quantity: 0
+    - rid: 824930045581853031
+      type: {class: Single, ns: System, asm: mscorlib}
+      data: 

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1565206e93ac5a84f83654956cafb99d, type: 3}
+  m_Name: Utility Eat Food
+  m_EditorClassIdentifier: Main::G_UtilityGoal
+  priority: 0
+  triggerConditions:
+  - state: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
+    comparison: 3
+    expectedValue:
+      rid: 824930045581853032
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: f100
+    editorActive: 1
+  goalEffects:
+  - state: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
+    comparison: 0
+    expectedValue:
+      rid: 824930045581853033
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: f100
+    editorActive: 1
+  canInterrupt: 0
+  utilityScorer:
+    values:
+    - {fileID: 11400000, guid: 2f5beb263e379d74295f64bd513f8135, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 824930045581853032
+      type: {class: Single, ns: System, asm: mscorlib}
+      data: 
+    - rid: 824930045581853033
+      type: {class: Single, ns: System, asm: mscorlib}
+      data: 

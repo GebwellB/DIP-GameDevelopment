@@ -7,7 +7,7 @@ namespace GOAP
     [CreateAssetMenu(fileName = "New Float State", menuName = "GOAP/States/Float State")]
     public class G_FloatState : G_State
     {
-        float value;
+        [SerializeField] float value;
 
         #region Basic Controls
 
@@ -29,6 +29,11 @@ namespace GOAP
             {
                 this.value = (float)value;
             }
+        }
+
+        public void AddToValue(float valueToAdd)
+        {
+            value += valueToAdd;
         }
 
         public override G_State Clone()

@@ -1,5 +1,4 @@
 # DIP Game Development
-## This is the completed prototype, with content from all videos
 Session 1 - ✔
 Session 2 - ✔
 Session 3 - ✔

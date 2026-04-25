@@ -278,7 +278,7 @@ namespace GOAP
 
             for (int i = 0; i < localWorldState.goals.Count; i++)
             {
-                Debug.Log($"{localWorldState.goals[i].name}");
+                //Debug.Log($"{localWorldState.goals[i].name}");
                 if (G_Planner.GeneratePlan(localWorldState.goals[i], localWorldState, out tempPlan))
                 {
                     Debug.Log($"Planned goal {localWorldState.goals[i]} successfully");

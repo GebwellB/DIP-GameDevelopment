@@ -1,11 +1,21 @@
- using GOAP;
+using GOAP;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.AI;
+using Pathfinding;
 
 public class NPCPathing : MonoBehaviour
 {
+    [Header("Location Management")]
+    [SerializeField]
+    LocationInstance currentLocation; // Use this for tracking current location
+    [SerializeField] G_AtLocation locationTrackingStateRef;
+    G_AtLocation locationTrackingState;
+
+    [Header("Pathfinding")]
+    [SerializeField] bool useNavmesh = true;
+
+    [Header("Navmesh")]
     NavMeshAgent agent;
     public NavMeshAgent Agent
     {
@@ -14,21 +24,63 @@ public class NPCPathing : MonoBehaviour
 
     NPCGOAPHandler worldState;
 
-    [SerializeField]
-    LocationInstance currentLocation; // Use this for tracking current location
-    [SerializeField] G_AtLocation locationTrackingStateRef;
-    G_AtLocation locationTrackingState;
+
+    [Header("Alternate Pathfinding")]
+    AIPath altPathfinder;
+
+    #region Setup
+    public void Init(NPCGOAPHandler worldState)
+    {
+        this.worldState = worldState;
+        if (locationTrackingStateRef != null)
+        {
+            AssignLocationTrackingState();
+        }
+        if (useNavmesh)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
+        else
+        {
+            altPathfinder = GetComponent<AIPath>();
+        }
+        
+    }
+    void AssignLocationTrackingState()
+    {
+        G_AtLocation tempState = this.worldState.GetLocalWorldState().FindState(locationTrackingStateRef) as G_AtLocation;
+        if (tempState != null)
+        {
+            locationTrackingState = tempState;
+        }
+    }
+    #endregion
 
     #region Pathing
 
     public void StartPath(Vector3 destination)
     {
-        agent.SetDestination(destination);
+        if (useNavmesh)
+        {
+            agent.SetDestination(destination);
+        }
+        else
+        {
+            altPathfinder.destination = destination;
+        }
+       
     }
 
     public void StartPath(LocationInstance locationInstance)
     {
-        agent.SetDestination(locationInstance.GetAccesPoint());
+        if (useNavmesh)
+        {
+            agent.SetDestination(locationInstance.GetAccesPoint());
+        }
+        else
+        {
+            altPathfinder.destination = locationInstance.GetAccesPoint();
+        }
     }
 
     public bool IsAtLocation(LocationInstance location)
@@ -43,26 +95,6 @@ public class NPCPathing : MonoBehaviour
             : type == null;
     }
 
-    #endregion
-
-    #region Setup
-    public void Init(NPCGOAPHandler worldState)
-    {
-        this.worldState = worldState;
-        if (locationTrackingStateRef != null)
-        {
-            AssignLocationTrackingState();
-        }
-        agent = GetComponent<NavMeshAgent>();
-    }
-    void AssignLocationTrackingState()
-    {
-        G_AtLocation tempState = this.worldState.GetLocalWorldState().FindState(locationTrackingStateRef) as G_AtLocation;
-        if (tempState != null)
-        {
-            locationTrackingState = tempState;
-        }
-    }
     #endregion
 
     #region Location Entry and Exit

@@ -19,7 +19,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036414
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
@@ -27,7 +27,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036416
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   goalEffects:
@@ -36,7 +36,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036415
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   - state: {fileID: 11400000, guid: 52c5efea6368f6e449258ed767881ae1, type: 2}
@@ -44,7 +44,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929796005036417
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   references:

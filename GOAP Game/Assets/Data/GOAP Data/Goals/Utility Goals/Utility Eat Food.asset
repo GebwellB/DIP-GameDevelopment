@@ -17,7 +17,7 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
     comparison: 3
     expectedValue:
-      rid: 824930068702953934
+      rid: 824930068876755587
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: f100
@@ -26,21 +26,21 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
     comparison: 0
     expectedValue:
-      rid: 824930068702953935
+      rid: 824930068876755588
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: f100
     editorActive: 1
-  canInterrupt: 0
+  canInterrupt: 1
   utilityScorer:
     values:
     - {fileID: 11400000, guid: 2f5beb263e379d74295f64bd513f8135, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 824930068702953934
+    - rid: 824930068876755587
       type: {class: Single, ns: System, asm: mscorlib}
       data: 
-    - rid: 824930068702953935
+    - rid: 824930068876755588
       type: {class: Single, ns: System, asm: mscorlib}
       data: 

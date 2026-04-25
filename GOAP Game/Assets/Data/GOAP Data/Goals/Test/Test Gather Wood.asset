@@ -19,7 +19,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929999533375488
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   goalEffects:
@@ -28,7 +28,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824929999533375489
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   references:

@@ -2455,7 +2455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7588564558324105923, guid: 498c6c12a80528b479f41052ee5ec887, type: 3}
       propertyPath: useNavmesh
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7788054814855357135, guid: 498c6c12a80528b479f41052ee5ec887, type: 3}
       propertyPath: m_LocalPosition.y

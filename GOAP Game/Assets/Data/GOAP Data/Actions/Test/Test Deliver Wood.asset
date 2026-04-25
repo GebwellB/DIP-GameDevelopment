@@ -53,7 +53,7 @@ MonoBehaviour:
     item: {fileID: 0}
     quantity: 0
   offeredItem:
-    item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+    item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
     quantity: 10
   requestFullQuantity: 1
   tradeTime: 0.3
@@ -66,15 +66,15 @@ MonoBehaviour:
     - rid: 824929999898542250
       type: {class: ItemStack, ns: , asm: Main}
       data:
-        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+        item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
         quantity: 10
     - rid: 824929999898542251
       type: {class: ItemStack, ns: , asm: Main}
       data:
-        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+        item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
         quantity: 0
     - rid: 824929999898542252
       type: {class: ItemStack, ns: , asm: Main}
       data:
-        item: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+        item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
         quantity: 9999

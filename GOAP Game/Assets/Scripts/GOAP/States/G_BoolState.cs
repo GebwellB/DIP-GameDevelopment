@@ -28,6 +28,7 @@ namespace GOAP
             if (TestValueMatch(value))
             {
                 this.value = (bool)value;
+                SendUpdate(this.value);
             }
         }
 

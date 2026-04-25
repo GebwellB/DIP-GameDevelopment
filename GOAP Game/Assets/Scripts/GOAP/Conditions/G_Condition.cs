@@ -105,7 +105,7 @@ namespace GOAP
         /// <returns></returns>
         public bool DoesStateMeetCondition()
         {
-            if(useExpectedReference)
+            if (useExpectedReference)
             {
                 return state.TestState(state, comparison, expectedReference);
             }
@@ -182,6 +182,14 @@ namespace GOAP
                 {
                     this.SetState(stateHolder);
                 }
+            }
+        }
+
+        public void TrySwitchToLocalState(G_State localState)
+        {
+            if (CanSwitchToLocalState() && localState != null)
+            {
+                this.SetState(localState);
             }
         }
 

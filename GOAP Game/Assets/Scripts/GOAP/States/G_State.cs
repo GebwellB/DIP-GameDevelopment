@@ -9,7 +9,6 @@ namespace GOAP
         // The value we are storing
         object value;
         public bool isLocal = false;
-
         internal event DelegateTypes.Void_object valueChanged;
         public event DelegateTypes.Void_object ValueChanged
         {
@@ -28,6 +27,7 @@ namespace GOAP
         public virtual void SetValue(object value)
         {
             this.value = value;
+            SendUpdate(this.value);
         }
 
         internal void SendUpdate(object value)

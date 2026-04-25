@@ -1084,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.2718005
+      value: 12.1693325
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1092,11 +1092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.25326
+      value: 24.217276
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.16781574
+      value: 0.17382762
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1104,7 +1104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9858184
+      value: -0.98477614
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1116,7 +1116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -199.322
+      value: -159.979
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1177,7 +1177,7 @@ MonoBehaviour:
     expectedValue:
       rid: 824930062426440070
     expectedReference: {fileID: 0}
-    useExpectedReference: 1
+    useExpectedReference: 0
     serializedExpectedValue: 
     editorActive: 1
   references:
@@ -1187,7 +1187,7 @@ MonoBehaviour:
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
-        quantity: 10
+        quantity: 500
 --- !u!1001 &1610101613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1535,7 +1535,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1340839161356620161, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_Speed
-      value: 50
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 1340839161356620161, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_BaseOffset
@@ -1543,11 +1543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1340839161356620161, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_Acceleration
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1340839161356620161, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_AngularSpeed
-      value: 200
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 4162623994054567911, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1591,7 +1591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: inventory.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: inventory.Array.data[0].item
@@ -1604,7 +1604,7 @@ PrefabInstance:
     - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: inventory.Array.data[2].item
       value: 
-      objectReference: {fileID: 11400000, guid: 5bc531a30223c214c9cb4519f7f79272, type: 2}
+      objectReference: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
     - target: {fileID: 5276670327743921579, guid: 3daa9064ed122f74abc38ddd710004e2, type: 3}
       propertyPath: inventory.Array.data[0].quantity
       value: 100

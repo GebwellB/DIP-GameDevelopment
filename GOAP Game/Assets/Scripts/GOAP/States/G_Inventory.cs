@@ -177,7 +177,16 @@ namespace GOAP
                 expectedValue.managedReferenceValue = new ItemStack();
                 property.FindPropertyRelative("serializedExpectedValue").stringValue = "";
                 property.FindPropertyRelative("expectedReference").objectReferenceValue = null;
+                property.FindPropertyRelative("useExpectedReference").boolValue = false;
+            }
+
+            if (property.FindPropertyRelative("useExpectedReference").boolValue != true)
+            {
                 property.FindPropertyRelative("useExpectedReference").boolValue = true;
+            }
+            else // Adding in this else statement to test a null reference error in the win condition. Don't think it's related, but still keen to check
+            {
+                property.FindPropertyRelative("useExpectedReference").boolValue = false;
             }
 
             SerializedProperty item = expectedValue.FindPropertyRelative("item");

@@ -29,7 +29,7 @@ namespace GOAP
             return priority;
         }
 
-        public bool CanStarGoal()
+        public bool CanStartGoal()
         {
             return AllConditionsMet(triggerConditions);
         }

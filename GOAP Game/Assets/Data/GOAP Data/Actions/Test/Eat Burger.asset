@@ -35,16 +35,17 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
     comparison: 0
     expectedValue:
-      rid: 824930045581853031
+      rid: 824930068466237626
     expectedReference: {fileID: 0}
-    useExpectedReference: 0
+    useExpectedReference: 1
     serializedExpectedValue: f100
     editorActive: 1
-  consumptionTime: 5
+  consumptionTime: 2
   foodItem:
     item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
     quantity: 1
   currentHunger: {fileID: 11400000, guid: 6335b69310f2dab4e82840131d7f0c94, type: 2}
+  fullnessAdded: 100
   references:
     version: 2
     RefIds:
@@ -58,6 +59,6 @@ MonoBehaviour:
       data:
         item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
         quantity: 0
-    - rid: 824930045581853031
+    - rid: 824930068466237626
       type: {class: Single, ns: System, asm: mscorlib}
       data: 

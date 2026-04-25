@@ -267,7 +267,6 @@ namespace GOAP
             Debug.Log("Plan goal");
             List<G_Action> tempPlan = new List<G_Action>();
 
-
             if (recalculatePriority)
             {
                 for (int i = 0; i < localWorldState.goals.Count; i++)
@@ -279,12 +278,17 @@ namespace GOAP
 
             for (int i = 0; i < localWorldState.goals.Count; i++)
             {
+                Debug.Log($"{localWorldState.goals[i].name}");
                 if (G_Planner.GeneratePlan(localWorldState.goals[i], localWorldState, out tempPlan))
                 {
                     Debug.Log($"Planned goal {localWorldState.goals[i]} successfully");
                     currentGoal = localWorldState.goals[i];
                     currentPlan = tempPlan;
                     break;
+                }
+                else
+                {
+                    Debug.Log($"Planned goal {localWorldState.goals[i]} FAILED");
                 }
             }
         }
@@ -345,6 +349,12 @@ namespace GOAP
             {
                 print("Plan finished");
                 bool goalAchieved = currentGoal.DidGoalSucceed();
+                Debug.Log($"Current Goal: {currentGoal.name}");
+                //for(int i = 0; i < currentGoal.goalEffects.Count; i++)
+                //{
+                //    Debug.Log($"===========================================\nGoal Met: {currentGoal.goalEffects[i].Met}\nGoal State: {currentGoal.goalEffects[i].State}\nGoal Expected Value: {currentGoal.goalEffects[i].ExpectedValue}\nGoal Expected Reference: {currentGoal.goalEffects[i].ExpectedReference}");
+                //}
+                
                 print($"Did goal succeed? {goalAchieved}");
                 currentGoal = null;
             }
@@ -391,8 +401,8 @@ namespace GOAP
             }
             if (includeInterrupts)
             {
-                G_Goal possibleInterrup = (localWorldState as G_UtilityWorldState).CheckForInterrupts(currentGoal);
-                if (possibleInterrup != currentGoal)
+                G_Goal possibleInterrupt = (localWorldState as G_UtilityWorldState).CheckForInterrupts(currentGoal);
+                if (possibleInterrupt != currentGoal)
                 {
                     SelectGoal(false);
                 }

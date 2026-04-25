@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84069e33e5c7964aafd70b9ab8192db, type: 3}
   m_Name: Test Action
   m_EditorClassIdentifier: Main::GOAP.G_Action
+  cost: 10
+  priority: 0
   preconditions:
   - state: {fileID: 11400000, guid: d75b2bba712813542a333a18296e09d3, type: 2}
     comparison: 0
     expectedValue:
-      rid: 824929796005036412
+      rid: 824930068702953932
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: bFalse
@@ -24,7 +26,7 @@ MonoBehaviour:
   - state: {fileID: 11400000, guid: fa7cfc9b626376c4b92f62da2d02579a, type: 2}
     comparison: 3
     expectedValue:
-      rid: 824929796005036413
+      rid: 824930068702953933
     expectedReference: {fileID: 0}
     useExpectedReference: 0
     serializedExpectedValue: f4
@@ -98,9 +100,9 @@ MonoBehaviour:
       data:
         item: {fileID: 0}
         quantity: 0
-    - rid: 824929796005036412
+    - rid: 824930068702953932
       type: {class: Boolean, ns: System, asm: mscorlib}
       data: 
-    - rid: 824929796005036413
+    - rid: 824930068702953933
       type: {class: Single, ns: System, asm: mscorlib}
       data: 

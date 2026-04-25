@@ -44,7 +44,7 @@ namespace GOAP
 
         // Has the coniditon been met during planning?
         [SerializeField]
-        bool useExpectedReference = false;
+        bool useExpectedReference = true;
         public bool UseExpectedReference
         {
             get { return useExpectedReference; }
@@ -105,6 +105,7 @@ namespace GOAP
         /// <returns></returns>
         public bool DoesStateMeetCondition()
         {
+            Debug.Log($"Checking state: {state.name}, ExpectedValue type: {expectedValue?.GetType()}, ExpectedReference: {expectedReference.GetType()}");
             if (useExpectedReference)
             {
                 return state.TestState(state, comparison, expectedReference);

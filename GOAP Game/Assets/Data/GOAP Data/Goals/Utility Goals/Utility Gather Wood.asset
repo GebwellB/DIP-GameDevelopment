@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::G_UtilityGoal
   priority: 0
   triggerConditions:
-  - state: {fileID: 11400000, guid: 8687b0bfc64172542a9ea135a7ddb854, type: 2}
+  - state: {fileID: 11400000, guid: c6424cfaea89ad8469b5df10fa74efcc, type: 2}
     comparison: 0
     expectedValue:
       rid: 824930045581852672

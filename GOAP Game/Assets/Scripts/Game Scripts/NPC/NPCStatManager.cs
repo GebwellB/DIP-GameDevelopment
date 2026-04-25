@@ -13,7 +13,7 @@ public class NPCStatManager : MonoBehaviour
     [Header("Hunger")]
     public G_FloatState refCurrentFullness;
     public G_FloatState maxCurrentFullness;
-    G_FloatState currentFullness;
+    [SerializeField] G_FloatState currentFullness;
     public float hungerIncrementRate = -1f;
     public U_Value hunger;
 

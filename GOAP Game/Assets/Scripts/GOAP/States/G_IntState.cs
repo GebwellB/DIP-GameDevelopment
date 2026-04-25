@@ -145,6 +145,11 @@ namespace GOAP
                 property.FindPropertyRelative("useExpectedReference").boolValue = false;
             }
 
+            if (property.FindPropertyRelative("useExpectedReference").boolValue != false)
+            {
+                property.FindPropertyRelative("useExpectedReference").boolValue = false;
+            }
+
             Rect comparisonRect = new Rect(position.x,
                 position.y,
                 position.width * 0.75f,

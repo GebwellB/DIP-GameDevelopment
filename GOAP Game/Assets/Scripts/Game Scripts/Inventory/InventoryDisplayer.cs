@@ -1,6 +1,7 @@
+using GOAP;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GOAP;
 
 public class InventoryDisplayer : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class InventoryDisplayer : MonoBehaviour
     [Header("Win Condition")]
     public GameObject winGUI;
     public G_Condition winCondition;
+    bool hasWon = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -60,10 +62,31 @@ public class InventoryDisplayer : MonoBehaviour
             trackerReference.Track(displayStrings);
         }
 
-        if (winCondition.DoesStateMeetCondition())
+        if (!hasWon && winCondition.DoesStateMeetCondition())
         {
+            hasWon = true;
+
             Debug.Log("WE WIN!!!!!!");
             winGUI?.SetActive(true);
+            StartCoroutine(SlowDownTime());
         }
+    }
+
+    IEnumerator SlowDownTime()
+    {
+        float duration = 3f;
+        float startScale = Time.timeScale;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Lerp(startScale, 0f, t / duration);
+            yield return null;
+        }
+
+        Time.timeScale = 0f;
+
+        NPCGOAPHandler.RunGame(false);
     }
 }

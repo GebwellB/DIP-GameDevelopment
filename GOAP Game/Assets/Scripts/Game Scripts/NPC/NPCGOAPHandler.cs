@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 using GOAP;
 using UtilityAI;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 namespace GOAP
 {
@@ -12,6 +11,7 @@ namespace GOAP
     {
         [Header("World State")]
         public G_WorldState worldStateReference;
+        public static bool gameRunning = false;
         [SerializeField] G_WorldState localWorldState;
 
         [SerializeField] List<G_State> localStates = new List<G_State>();
@@ -45,6 +45,18 @@ namespace GOAP
         private void Awake()
         {
             map = mapInjector.FindAndInjectObject(transform.position, this);
+        }
+
+        public static void RunGame(bool value)
+        {
+            if (value)
+            {
+                gameRunning = true;
+            }
+            else
+            {
+                gameRunning = false;
+            }
         }
 
         void Start()
@@ -264,33 +276,37 @@ namespace GOAP
 
         void SelectGoal(bool recalculatePriority)
         {
-            Debug.Log("Plan goal");
-            List<G_Action> tempPlan = new List<G_Action>();
-
-            if (recalculatePriority)
+            if (gameRunning)
             {
+                Debug.Log("Plan goal");
+                List<G_Action> tempPlan = new List<G_Action>();
+
+                if (recalculatePriority)
+                {
+                    for (int i = 0; i < localWorldState.goals.Count; i++)
+                    {
+                        localWorldState.goals[i].GetPriority();
+                    }
+                }
+                localWorldState.OrderGoalsByPriority();
+
                 for (int i = 0; i < localWorldState.goals.Count; i++)
                 {
-                    localWorldState.goals[i].GetPriority();
+                    //Debug.Log($"{localWorldState.goals[i].name}");
+                    if (G_Planner.GeneratePlan(localWorldState.goals[i], localWorldState, out tempPlan))
+                    {
+                        Debug.Log($"Planned goal {localWorldState.goals[i]} successfully");
+                        currentGoal = localWorldState.goals[i];
+                        currentPlan = tempPlan;
+                        break;
+                    }
+                    else
+                    {
+                        Debug.Log($"Planned goal {localWorldState.goals[i]} FAILED");
+                    }
                 }
             }
-            localWorldState.OrderGoalsByPriority();
-
-            for (int i = 0; i < localWorldState.goals.Count; i++)
-            {
-                //Debug.Log($"{localWorldState.goals[i].name}");
-                if (G_Planner.GeneratePlan(localWorldState.goals[i], localWorldState, out tempPlan))
-                {
-                    Debug.Log($"Planned goal {localWorldState.goals[i]} successfully");
-                    currentGoal = localWorldState.goals[i];
-                    currentPlan = tempPlan;
-                    break;
-                }
-                else
-                {
-                    Debug.Log($"Planned goal {localWorldState.goals[i]} FAILED");
-                }
-            }
+            
         }
 
         void StartAction(G_Action action)

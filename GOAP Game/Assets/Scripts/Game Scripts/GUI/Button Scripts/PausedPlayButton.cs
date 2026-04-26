@@ -1,3 +1,4 @@
+using GOAP;
 using System;
 using UnityEngine;
 
@@ -8,22 +9,13 @@ public class PausedPlayButton : MonoBehaviour
     [SerializeField] public bool isTesting;
     void Awake()
     {
-        if (isTesting)
-        {
-            Time.timeScale = 1;
-            testingText.SetActive(true);
-        }
-        else
-        {
-            Time.timeScale = 0;
-            testingText.SetActive(false);
-        }
-        
+        menuObject.SetActive(true);
+        NPCGOAPHandler.RunGame(false);
     }
 
     public void Play()
     {
-        Time.timeScale = 1;
         menuObject.SetActive(false);
+        NPCGOAPHandler.RunGame(true);
     }
 }

@@ -7,6 +7,7 @@ public class ValueTracker : MonoBehaviour
 {
     public GameObject trackerEntryPrefab;
     List<TMP_Text> currentEntries = new List<TMP_Text>();
+    bool firstRun = true;
 
     public void Track(List<string> values)
     {
@@ -28,7 +29,11 @@ public class ValueTracker : MonoBehaviour
             }
         }
 
-        SetAllEntries(false);
+        if (firstRun)
+        {
+            SetAllEntries(false);
+            firstRun = false;
+        }
     }
 
     public void SetAllEntries(bool state)

@@ -5,6 +5,7 @@ public class MenuOrbitCamera : MonoBehaviour
     public Transform target;          // Point to rotate around
     public float rotationSpeed = 30f; // Degrees per second
     public GameObject menuObject;
+    public GameObject settingsMenuObject;
 
     [Header("Default (Menu Off) View")]
     public Vector3 defaultPosition;
@@ -32,7 +33,9 @@ public class MenuOrbitCamera : MonoBehaviour
 
     void Update()
     {
-        if (menuObject.activeInHierarchy && target != null)
+        if ((menuObject.activeSelf
+            || settingsMenuObject.activeSelf)
+            && target != null)
         {
             transform.RotateAround(target.position, Vector3.up, rotationSpeed * Time.unscaledDeltaTime);
 

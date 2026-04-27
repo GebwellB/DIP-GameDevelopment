@@ -64,7 +64,7 @@ MonoBehaviour:
     item: {fileID: 0}
     quantity: 0
   requestFullQuantity: 0
-  tradeTime: 1
+  tradeTime: 5
   isExtraction: 1
   references:
     version: 2

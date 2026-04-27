@@ -1,15 +1,17 @@
 using GOAP;
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class PausedPlayButton : MonoBehaviour
+public class MenuButtons : MonoBehaviour
 {
     public GameObject menuObject;
-    public GameObject testingText;
+    public GameObject settingsmenuObject;
+    public GameObject pauseButton;
     public ValueTracker valueTracker;
-    [SerializeField] public bool isTesting;
     void Awake()
     {
+        pauseButton.SetActive(false);
         menuObject.SetActive(true);
         valueTracker.SetAllEntries(false);
         NPCGOAPHandler.RunGame(false);
@@ -19,6 +21,13 @@ public class PausedPlayButton : MonoBehaviour
     {
         menuObject.SetActive(false);
         valueTracker.SetAllEntries(true);
+        pauseButton.SetActive(true);
         NPCGOAPHandler.RunGame(true);
+    }
+
+    public void OpenSettings()
+    {
+        menuObject.SetActive(false);
+        settingsmenuObject.SetActive(true);
     }
 }

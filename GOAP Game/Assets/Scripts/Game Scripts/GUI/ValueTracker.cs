@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using GOAP;
 
 public class ValueTracker : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class ValueTracker : MonoBehaviour
         for (int i = 0; i < values.Count; i++)
         {
             TMP_Text foundEntry = currentEntries.Find((text) => text.text.Split(" ")[0] == values[i].Split(" ")[0]);
-            if(foundEntry != null)
+            if (foundEntry != null)
             {
                 foundEntry.text = values[i];
             }
@@ -25,6 +26,16 @@ public class ValueTracker : MonoBehaviour
                 newEntry.text = values[i];
                 currentEntries.Add(newEntry);
             }
+        }
+
+        SetAllEntries(false);
+    }
+
+    public void SetAllEntries(bool state)
+    {
+        foreach (var entry in currentEntries)
+        {
+            entry.transform.parent.gameObject.SetActive(state);
         }
     }
 }

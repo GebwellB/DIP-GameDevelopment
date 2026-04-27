@@ -68,6 +68,7 @@ public class InventoryDisplayer : MonoBehaviour
 
             Debug.Log("WE WIN!!!!!!");
             winGUI?.SetActive(true);
+            trackerReference.SetAllEntries(false);
             StartCoroutine(SlowDownTime());
         }
     }

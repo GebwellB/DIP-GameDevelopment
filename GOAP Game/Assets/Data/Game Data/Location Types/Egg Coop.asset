@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43e03db1091cd749b033b6d557f331e, type: 3}
-  m_Name: Chopped Wood
-  m_EditorClassIdentifier: Main::Item
-  stackable: 1
+  m_Script: {fileID: 11500000, guid: 78cc146fce9ae2549bbce7aed84c5db6, type: 3}
+  m_Name: Egg Coop
+  m_EditorClassIdentifier: Main::LocationType

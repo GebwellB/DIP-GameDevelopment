@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 672b3350aff91fb43a7ebf518642060a, type: 3}
-  m_Name: Eat Burger
+  m_Name: Eat Chicken Feed
   m_EditorClassIdentifier: Main::G_Eat
   cost: 10
   priority: 0

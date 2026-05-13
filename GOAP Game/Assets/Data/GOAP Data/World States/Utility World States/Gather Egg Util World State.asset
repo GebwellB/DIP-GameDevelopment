@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6285de24b4ebc7a40a2172937536a1b2, type: 3}
-  m_Name: Test Util World State
+  m_Name: Gather Egg Util World State
   m_EditorClassIdentifier: Main::G_UtilityWorldState
   states:
   - {fileID: 11400000, guid: 8687b0bfc64172542a9ea135a7ddb854, type: 2}

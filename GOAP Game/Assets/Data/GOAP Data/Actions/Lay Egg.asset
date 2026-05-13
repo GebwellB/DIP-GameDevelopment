@@ -23,14 +23,6 @@ MonoBehaviour:
     useExpectedReference: 1
     serializedExpectedValue: 
     editorActive: 1
-  - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
-    comparison: 4
-    expectedValue:
-      rid: 824929955095248958
-    expectedReference: {fileID: 0}
-    useExpectedReference: 0
-    serializedExpectedValue: 
-    editorActive: 1
   - state: {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
     comparison: 4
     expectedValue:
@@ -71,11 +63,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 824929955095248958
-      type: {class: ItemStack, ns: , asm: Main}
-      data:
-        item: {fileID: 11400000, guid: f534f06b23c0f654b8c7fc31d8427eb2, type: 2}
-        quantity: 1
     - rid: 824929955095248959
       type: {class: ItemStack, ns: , asm: Main}
       data:

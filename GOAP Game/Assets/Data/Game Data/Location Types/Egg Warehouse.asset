@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78cc146fce9ae2549bbce7aed84c5db6, type: 3}
-  m_Name: Wood Stock
+  m_Name: Egg Warehouse
   m_EditorClassIdentifier: Main::LocationType

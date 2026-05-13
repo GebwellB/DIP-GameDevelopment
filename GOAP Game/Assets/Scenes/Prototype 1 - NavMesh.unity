@@ -2040,7 +2040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5259127116613342108, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
       propertyPath: m_Name
-      value: Shop
+      value: Silo
       objectReference: {fileID: 0}
     - target: {fileID: 8209465723804349055, guid: 00376bc562d2ab6498abc1150725eeaa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2548,7 +2548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3058683580271345055, guid: 73249bf6493c9e240acd6b4d628e0908, type: 3}
       propertyPath: m_Name
-      value: Tree
+      value: Egg Coop
       objectReference: {fileID: 0}
     - target: {fileID: 6363194952396951684, guid: 73249bf6493c9e240acd6b4d628e0908, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2581,7 +2581,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 89565933515575965, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_Name
-      value: Wood Stock
+      value: Egg Warehouse
       objectReference: {fileID: 0}
     - target: {fileID: 4048733964404962174, guid: d8b67700533422d448dde3250e8c5195, type: 3}
       propertyPath: m_LocalPosition.x

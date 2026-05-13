@@ -51,7 +51,7 @@ MonoBehaviour:
   targetInventory: {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
   requestedItem:
     item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
-    quantity: 10
+    quantity: 1
   offeredItem:
     item: {fileID: 0}
     quantity: 0
@@ -67,12 +67,12 @@ MonoBehaviour:
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
-        quantity: 10
+        quantity: 1
     - rid: 824929955095248960
       type: {class: ItemStack, ns: , asm: Main}
       data:
         item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
-        quantity: 10
+        quantity: 1
     - rid: 824929955095248962
       type: {class: ItemStack, ns: , asm: Main}
       data:

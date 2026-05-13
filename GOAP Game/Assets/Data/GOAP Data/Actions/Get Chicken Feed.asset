@@ -53,8 +53,8 @@ MonoBehaviour:
     item: {fileID: 11400000, guid: 9c0eecfbea49b5944af26d335f03643d, type: 2}
     quantity: 1
   offeredItem:
-    item: {fileID: 11400000, guid: 06656c051ecb3014e9ea8ec5e7543ac6, type: 2}
-    quantity: 1
+    item: {fileID: 0}
+    quantity: 0
   requestFullQuantity: 1
   tradeTime: 0.3
   isExtraction: 0

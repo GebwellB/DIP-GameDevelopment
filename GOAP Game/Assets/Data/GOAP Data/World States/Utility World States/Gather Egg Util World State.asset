@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc519f177287a0b4eb02e77ddf4906a0, type: 2}
   - {fileID: 11400000, guid: e2573a1910a6b3b4587d3a2d3cef0979, type: 2}
   - {fileID: 11400000, guid: f139c444607a2bd4d962f2a3ed8b3880, type: 2}
+  - {fileID: 11400000, guid: c6424cfaea89ad8469b5df10fa74efcc, type: 2}
   actionPool:
   - {fileID: 11400000, guid: f501e279b7fc0c4459796731bd1fd42c, type: 2}
   - {fileID: 11400000, guid: 14c8b173f117c9e4080339f738e90937, type: 2}
@@ -30,6 +31,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d2c8a18f2c4661846b782cd0d2d2a263, type: 2}
   - {fileID: 11400000, guid: f9df925457f8e2d49808f9fecac998f5, type: 2}
   - {fileID: 11400000, guid: c76d6a1b13a5fa54f97368f14553fb92, type: 2}
+  - {fileID: 11400000, guid: 0e286606aad9d4d43917f15e2466c9cb, type: 2}
+  - {fileID: 11400000, guid: e398427b4d129e940a19a0d73f6b45ec, type: 2}
   goals:
   - {fileID: 11400000, guid: f25807b2442fdb4428339b02e34b0543, type: 2}
   - {fileID: 11400000, guid: 9008777af2ebe4a42ae7c1c5ad304c30, type: 2}

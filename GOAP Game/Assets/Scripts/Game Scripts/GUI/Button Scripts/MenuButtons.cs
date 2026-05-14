@@ -23,10 +23,11 @@ public class MenuButtons : MonoBehaviour
 
     public void Play()
     {
+        NPCGOAPHandler.RunGame(true);
+        SFXManager.Instance.EnableSound();
         menuObject.SetActive(false);
         valueTracker.SetAllEntries(true);
         pauseButton.SetActive(true);
-        NPCGOAPHandler.RunGame(true);
     }
 
     public void OpenSettings()

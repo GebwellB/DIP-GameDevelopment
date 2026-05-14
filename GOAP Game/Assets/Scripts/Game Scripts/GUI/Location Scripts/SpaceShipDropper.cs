@@ -44,5 +44,9 @@ public class SpaceShipDropper : MonoBehaviour
     private void PlayLandingSound()
     {
         audioMixer.PlayOneShot(spaceshipLandingClip);
+        if (audioMixer.isPlaying)
+        {
+            Debug.Log("Something Played");
+        }
     }
 }

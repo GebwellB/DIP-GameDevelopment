@@ -1,4 +1,5 @@
 using UnityEngine;
+using GOAP;
 
 namespace ithappy.Animals_FREE
 {
@@ -31,34 +32,37 @@ namespace ithappy.Animals_FREE
 
         private void Move(float deltaTime)
         {
-            camera();
-            target();
-
-            void camera()
+            if (NPCGOAPHandler.gameRunning)
             {
-                var direction = m_TargetPos - m_Transform.position;
-                var delta = m_CameraSpeed * deltaTime;
+                camera();
+                target();
 
-                if(delta * delta > direction.sqrMagnitude)
+                void camera()
                 {
-                    m_Transform.position = m_TargetPos;
-                }
-                else
-                {
-                    m_Transform.position += delta * direction.normalized;
-                }
+                    var direction = m_TargetPos - m_Transform.position;
+                    var delta = m_CameraSpeed * deltaTime;
 
-                m_Transform.LookAt(m_LookPoint);
-            }
+                    if (delta * delta > direction.sqrMagnitude)
+                    {
+                        m_Transform.position = m_TargetPos;
+                    }
+                    else
+                    {
+                        m_Transform.position += delta * direction.normalized;
+                    }
 
-            void target()
-            {
-                if(m_Target == null)
-                {
-                    return;
+                    m_Transform.LookAt(m_LookPoint);
                 }
 
-                m_Target.position = m_Transform.position + m_Transform.forward * TargetDistance;
+                void target()
+                {
+                    if (m_Target == null)
+                    {
+                        return;
+                    }
+
+                    m_Target.position = m_Transform.position + m_Transform.forward * TargetDistance;
+                }
             }
         }
     }

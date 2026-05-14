@@ -12,6 +12,7 @@ namespace GOAP
         [Header("World State")]
         public G_WorldState worldStateReference;
         public static bool gameRunning = false;
+        public static bool readyToSpawn = false;
         [SerializeField] G_WorldState localWorldState;
 
         [SerializeField] List<G_State> localStates = new List<G_State>();

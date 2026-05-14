@@ -8,7 +8,11 @@ public class MenuButtons : MonoBehaviour
     public GameObject menuObject;
     public GameObject settingsmenuObject;
     public GameObject pauseButton;
+    public GameObject pauseMenu;
     public ValueTracker valueTracker;
+
+    public static bool openedFromGamePlay = false;
+
     void Awake()
     {
         pauseButton.SetActive(false);
@@ -27,6 +31,7 @@ public class MenuButtons : MonoBehaviour
 
     public void OpenSettings()
     {
+        SettingsButtons.openedFromPauseMenu = false;
         menuObject.SetActive(false);
         settingsmenuObject.SetActive(true);
     }

@@ -234,7 +234,7 @@ namespace GOAP
             expectedValue = null;
         }
 
-        [SerializeField] bool editorActive = false;
+        //[SerializeField] bool editorActive = false;
 
         public static void ValidateReferenceConditions(List<G_Condition> conditions, out int trackerCount)
         {

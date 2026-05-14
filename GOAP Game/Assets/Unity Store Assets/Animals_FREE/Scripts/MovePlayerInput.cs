@@ -1,4 +1,5 @@
 using UnityEngine;
+using GOAP;
 
 namespace ithappy.Animals_FREE
 {
@@ -37,6 +38,7 @@ namespace ithappy.Animals_FREE
 
         private void Awake()
         {
+            CameraStateController.cameraLocked = true;
             m_Mover = GetComponent<CreatureMover>();
         }
 
@@ -69,7 +71,7 @@ namespace ithappy.Animals_FREE
                 m_Mover.SetInput(in m_Axis, in m_Target, in m_IsRun, m_IsJump);
             }
 
-            if (m_Camera != null)
+            if (m_Camera != null && !CameraStateController.cameraLocked)
             {
                 m_Camera.SetInput(in m_MouseDelta, m_Scroll);
             }

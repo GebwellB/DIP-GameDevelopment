@@ -124,7 +124,7 @@ namespace UtilityAI
 
         public float GetUtility()
         {
-            float value = 0f;
+            //float value = 0f;
             float variable = ReturnSourceValue(varSource, true);
             float maximum = ReturnSourceValue(maxSource, false);
             float percentage = 0;

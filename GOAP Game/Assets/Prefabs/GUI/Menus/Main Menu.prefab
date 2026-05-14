@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0.5882353}
+  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -148,6 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::PausedPlayButton
   menuObject: {fileID: 4576484335091274523}
   settingsmenuObject: {fileID: 4576484335091274523, guid: 16e9fae9328e6b043bb2ef2de9e83868, type: 3}
+  pauseButton: {fileID: 0}
+  pauseMenu: {fileID: 0}
   valueTracker: {fileID: 0}
 --- !u!1 &1112047871052340277
 GameObject:
@@ -347,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0.5882353}
+  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -434,6 +436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::PausedPlayButton
   menuObject: {fileID: 4576484335091274523}
   settingsmenuObject: {fileID: 4576484335091274523, guid: 16e9fae9328e6b043bb2ef2de9e83868, type: 3}
+  pauseButton: {fileID: 0}
+  pauseMenu: {fileID: 0}
   valueTracker: {fileID: 0}
 --- !u!1 &3087517988619036523
 GameObject:
@@ -880,7 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.45490196, g: 0.45490196, b: 0.45490196, a: 0.5882353}
+  m_Color: {r: 0.45490196, g: 0.45490196, b: 0.45490196, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

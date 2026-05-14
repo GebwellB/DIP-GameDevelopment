@@ -7,7 +7,7 @@ namespace GOAP
     {
         // The value we are storing
         object value;
-        bool isLocal = false;
+        new bool isLocal = false;
 
         #region Basic Controls
         public override void Construct(string name, object value, bool isLocal)

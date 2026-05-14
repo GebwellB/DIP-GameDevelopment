@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa32fe2f25149d148b535da28a3f4b2c, type: 3}
+  m_Name: Steal Egg
+  m_EditorClassIdentifier: Main::GOAP.G_Trade
+  cost: 10
+  priority: 0
+  preconditions:
+  - state: {fileID: 11400000, guid: fba5195377e594447a340956dc634ecf, type: 2}
+    comparison: 0
+    expectedValue:
+      rid: -2
+    expectedReference: {fileID: 11400000, guid: 352c630b7c68d7f4ba20a05d8ee894d4, type: 2}
+    useExpectedReference: 1
+    serializedExpectedValue: 
+    editorActive: 1
+  - state: {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
+    comparison: 4
+    expectedValue:
+      rid: 824929955095248959
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: 
+    editorActive: 1
+  effects:
+  - state: {fileID: 11400000, guid: 19bfe49eb4f6bb646a12ddb8c9057f0a, type: 2}
+    comparison: 4
+    expectedValue:
+      rid: 824929955095248960
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: 
+    editorActive: 1
+  - state: {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
+    comparison: 0
+    expectedValue:
+      rid: 824929955095248962
+    expectedReference: {fileID: 0}
+    useExpectedReference: 0
+    serializedExpectedValue: 
+    editorActive: 1
+  targetInventory: {fileID: 11400000, guid: 6a049441c3264da4395aab9f507e4d65, type: 2}
+  requestedItem:
+    item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
+    quantity: 1
+  offeredItem:
+    item: {fileID: 0}
+    quantity: 0
+  requestFullQuantity: 0
+  tradeTime: 5
+  isExtraction: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 824929955095248959
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
+        quantity: 1
+    - rid: 824929955095248960
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
+        quantity: 1
+    - rid: 824929955095248962
+      type: {class: ItemStack, ns: , asm: Main}
+      data:
+        item: {fileID: 11400000, guid: 7e31fba644ce16d44bc706d24fd062fd, type: 2}
+        quantity: 0

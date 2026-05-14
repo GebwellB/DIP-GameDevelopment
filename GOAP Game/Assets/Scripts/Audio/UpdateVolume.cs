@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
+using GOAP;
 
 public class UpdateVolume : MonoBehaviour
 {
@@ -16,11 +17,24 @@ public class UpdateVolume : MonoBehaviour
 
     public AudioMixer MasterAudioMixer;
 
-    void Awake()
+    private void Start()
+    {
+        LoadSettings();
+        ApplySettings();
+    }
+
+    void LoadSettings()
     {
         MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 100);
         SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 75);
         MusicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 50);
+    }
+
+    void ApplySettings()
+    {
+        OnMasterVolumeChanged(MasterVolumeSlider.value);
+        OnSFXVolumeChanged(SFXVolumeSlider.value);
+        OnMusicVolumeChanged(MusicVolumeSlider.value);
     }
 
     public void OnMasterVolumeChanged(float value)

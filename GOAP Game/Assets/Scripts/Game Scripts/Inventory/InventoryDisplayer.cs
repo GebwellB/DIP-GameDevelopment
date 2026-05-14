@@ -75,7 +75,7 @@ public class InventoryDisplayer : MonoBehaviour
 
     IEnumerator SlowDownTime()
     {
-        float duration = 3f;
+        float duration = 12f;
         float startScale = Time.timeScale;
         float t = 0f;
 

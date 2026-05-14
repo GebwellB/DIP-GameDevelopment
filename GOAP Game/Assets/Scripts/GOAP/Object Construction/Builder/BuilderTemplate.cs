@@ -11,7 +11,7 @@ namespace GOAP
 
         // Any vales to be transffered to the built object
         string name = "";
-        bool isLocal = false;
+        //bool isLocal = false;
         object value = null;
 
         public BuilderTemplate(string name)

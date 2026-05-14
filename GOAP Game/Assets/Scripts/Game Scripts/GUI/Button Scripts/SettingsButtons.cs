@@ -5,11 +5,22 @@ using UnityEngine;
 public class SettingsButtons : MonoBehaviour
 {
     public GameObject menuObject;
+    public GameObject pauseObject;
     public GameObject settingsmenuObject;
+
+    public static bool openedFromPauseMenu;
 
     public void CloseSettings()
     {
-        settingsmenuObject.SetActive(false);
-        menuObject.SetActive(true);
+        if (openedFromPauseMenu)
+        {
+            settingsmenuObject.SetActive(false);
+            pauseObject.SetActive(true);
+        }
+        else
+        {
+            settingsmenuObject.SetActive(false);
+            menuObject.SetActive(true);
+        } 
     }
 }

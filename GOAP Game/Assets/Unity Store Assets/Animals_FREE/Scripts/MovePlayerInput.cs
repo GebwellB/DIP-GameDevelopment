@@ -1,5 +1,6 @@
-using UnityEngine;
 using GOAP;
+using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 namespace ithappy.Animals_FREE
 {
@@ -11,8 +12,6 @@ namespace ithappy.Animals_FREE
         private string m_HorizontalAxis = "Horizontal";
         [SerializeField]
         private string m_VerticalAxis = "Vertical";
-        [SerializeField]
-        private string m_JumpButton = "Jump";
         [SerializeField]
         private KeyCode m_RunKey = KeyCode.LeftShift;
 
@@ -52,10 +51,10 @@ namespace ithappy.Animals_FREE
         {
             m_Axis = new Vector2(Input.GetAxis(m_HorizontalAxis), Input.GetAxis(m_VerticalAxis));
             m_IsRun = Input.GetKey(m_RunKey);
-            m_IsJump = Input.GetButton(m_JumpButton);
 
             m_Target = (m_Camera == null) ? Vector3.zero : m_Camera.Target;
-            m_MouseDelta = new Vector2(Input.GetAxis(m_MouseX), Input.GetAxis(m_MouseY));
+            //m_MouseDelta = new Vector2(Input.GetAxis(m_MouseX), Input.GetAxis(m_MouseY)); // Standard mouse input
+            m_MouseDelta = new Vector2(Input.GetAxis(m_MouseX), -Input.GetAxis(m_MouseY)); // Inverted mouse input
             m_Scroll = Input.GetAxis(m_MouseScroll);
         }
 

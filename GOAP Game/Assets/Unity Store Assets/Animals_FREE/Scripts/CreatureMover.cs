@@ -18,8 +18,6 @@ namespace ithappy.Animals_FREE
         private float m_RotateSpeed = 90f;
         [SerializeField]
         private Space m_Space = Space.Self;
-        [SerializeField]
-        private float m_JumpHeight = 5f;
 
         [Header("Animator")]
         [SerializeField]
@@ -51,7 +49,7 @@ namespace ithappy.Animals_FREE
             m_WalkSpeed = Mathf.Max(m_WalkSpeed, 0f);
             m_RunSpeed = Mathf.Max(m_RunSpeed, m_WalkSpeed);
 
-            m_Movement?.SetStats(m_WalkSpeed / 3.6f, m_RunSpeed / 3.6f, m_RotateSpeed, m_JumpHeight, m_Space);
+            m_Movement?.SetStats(m_WalkSpeed / 3.6f, m_RunSpeed / 3.6f, m_RotateSpeed, m_Space);
         }
 
         private void Awake()
@@ -60,7 +58,7 @@ namespace ithappy.Animals_FREE
             m_Controller = GetComponent<CharacterController>();
             m_Animator = GetComponent<Animator>();
 
-            m_Movement = new MovementHandler(m_Controller, m_Transform, m_WalkSpeed, m_RunSpeed, m_RotateSpeed, m_JumpHeight, m_Space);
+            m_Movement = new MovementHandler(m_Controller, m_Transform, m_WalkSpeed, m_RunSpeed, m_RotateSpeed, 0.0f, m_Space);
             m_Animation = new AnimationHandler(m_Animator, m_VerticalID, m_StateID);
         }
 
@@ -153,7 +151,7 @@ namespace ithappy.Animals_FREE
                 m_Space = space;
             }
 
-            public void SetStats(float walkSpeed, float runSpeed, float rotateSpeed, float jumpHeight, Space space)
+            public void SetStats(float walkSpeed, float runSpeed, float rotateSpeed, Space space)
             {
                 m_WalkSpeed = walkSpeed;
                 m_RunSpeed = runSpeed;

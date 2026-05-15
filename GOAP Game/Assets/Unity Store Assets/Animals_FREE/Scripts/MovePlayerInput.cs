@@ -65,14 +65,17 @@ namespace ithappy.Animals_FREE
 
         public void SetInput()
         {
-            if (m_Mover != null)
+            if(NPCGOAPHandler.gameRunning && NPCGOAPHandler.readyToSpawn)
             {
-                m_Mover.SetInput(in m_Axis, in m_Target, in m_IsRun, m_IsJump);
-            }
+                if (m_Mover != null)
+                {
+                    m_Mover.SetInput(in m_Axis, in m_Target, in m_IsRun, m_IsJump);
+                }
 
-            if (m_Camera != null && !CameraStateController.cameraLocked)
-            {
-                m_Camera.SetInput(in m_MouseDelta, m_Scroll);
+                if (m_Camera != null && !CameraStateController.cameraLocked)
+                {
+                    m_Camera.SetInput(in m_MouseDelta, m_Scroll);
+                }
             }
         }
     }

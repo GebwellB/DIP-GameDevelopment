@@ -29,6 +29,8 @@ public class PauseScript : MonoBehaviour
     public void ReturnToMenu()
     {
         NPCGOAPHandler.gameRunning = false;
+        NPCGOAPHandler.readyToSpawn = false;
+        EscapeKeyPause.stopInput = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

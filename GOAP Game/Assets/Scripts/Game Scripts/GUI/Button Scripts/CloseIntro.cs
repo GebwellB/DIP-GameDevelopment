@@ -8,9 +8,9 @@ public class CloseIntro : MonoBehaviour
     public GameObject spawnMoreAliensButton;
     public void ResumeGame()
     {
+        Time.timeScale = 1f;
         valueTracker.SetActive(true);
         spawnMoreAliensButton.SetActive(true);
-        Time.timeScale = 1f;
         NPCGOAPHandler.readyToSpawn = true;
         SFXManager.Instance.EnableSound();
         introText.SetActive(false);

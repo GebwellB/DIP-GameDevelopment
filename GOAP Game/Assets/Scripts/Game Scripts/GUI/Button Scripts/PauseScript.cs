@@ -19,7 +19,7 @@ public class PauseScript : MonoBehaviour
         }
         else
         {
-            EscapeKeyPause.stopInput = false;
+            EscapeKeyPause_NavMesh.stopInput = false;
             NPCGOAPHandler.gameRunning = true;
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
@@ -30,7 +30,7 @@ public class PauseScript : MonoBehaviour
     {
         NPCGOAPHandler.gameRunning = false;
         NPCGOAPHandler.readyToSpawn = false;
-        EscapeKeyPause.stopInput = false;
+        EscapeKeyPause_NavMesh.stopInput = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -17,5 +17,12 @@ public class MenuButtonsAStar : MonoBehaviour
     {
         menuObject.SetActive(false);
         NPCGOAPHandler.RunGame(true);
+        if (PauseScriptAStar.escPressed)
+        {
+            Time.timeScale = 1f;
+            PauseScriptAStar.escPressed = false;
+            NPCGOAPHandler.gameRunning = true;
+            EscapeKeyPause_AStar.stopInput = false;
+        }
     }
 }
